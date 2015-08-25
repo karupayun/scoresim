@@ -1,0 +1,2555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="refresh" content="10" >
+<title>Simulador de World Finals</title>
+<style type="text/css">
+/***************** statistics ********************/
+table#statisticswrapper {
+    width: 100%;
+}
+
+.statisticsheader {
+    padding-top: 10pt;
+    padding-bottom: 0pt;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+td.statistics_row0{
+  background-color:#FFFFFF;
+}
+td.statistics_row1{
+  background-color:#DDDDDD;
+}
+
+table.statisticstable {
+  width:100%;
+}
+
+.statisticstable td {
+  text-align: right;
+}
+
+table.progress_stats {
+  width:50%;
+}
+
+.progress_stats td {
+  text-align: right;
+}
+
+th.statisticsrowheader {
+  width: 75px;
+}
+
+
+/**************** body and tag styles ****************/
+
+body {
+  margin: 0;
+  background-color: #E3DCC0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+}
+		  
+h1 {
+  font-size: 1.6em;
+  margin: 15px 0;
+}
+					
+h2 {
+  font-size: 1.4em;
+  margin: 10px 0;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+a:link, a:visited, a:link:hover, a:visited:hover {
+  color:#2756CC;
+}		
+a:link, a:visited {
+  text-decoration: none;
+}
+a:link:hover, a:visited:hover {
+  text-decoration: underline;
+}
+
+td{
+  vertical-align:top;
+  border:0;
+}
+
+.error{
+	text-align:center;
+	color:#FF0000;
+	font-weight:bold;
+}
+
+.confirmation{
+	text-align:center;
+	color:#00AA00;
+	font-weight:bold;
+}
+
+hr{
+  border:1px solid #CCCCCC;
+  border-bottom:0;
+  margin:3px 0;
+}
+
+.no_border{
+  border:0px;
+}
+
+/**************** filter styles ****************/
+#filter{
+  padding:0;
+  margin:0;
+}
+#filter_table{
+  margin-top:25px;
+  width:100%;
+  border-collapse:collapse;
+}
+#filter_table td{
+  width:50%;
+  border:0;
+  vertical-align:bottom;
+}
+
+.status_filter td {
+    border:0;
+}
+
+/**************** container styles ****************/
+.container {
+  width: 800px;
+  background-color: white;
+  margin: 10px auto;
+  position:relative;
+  padding: 15px 25px;
+  text-align:left;
+  border:1px solid #aaa;   
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);  
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.container:before, .container:after {
+   position: absolute;  
+   width: 350px;  
+   height: 10px;  
+   content: ' ';  
+   left: 12px;  
+   bottom: 14px;  
+   background: transparent;  
+   -webkit-transform: skew(-5deg) rotate(-5deg);  
+   -moz-transform: skew(-5deg) rotate(-5deg);  
+   -ms-transform: skew(-5deg) rotate(-5deg);  
+   -o-transform: skew(-5deg) rotate(-5deg);  
+   transform: skew(-5deg) rotate(-5deg);  
+   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   z-index: -1;  
+}
+.container:after {  
+   left: auto;  
+   right: 12px;  
+   -webkit-transform: skew(5deg) rotate(5deg);  
+   -moz-transform: skew(5deg) rotate(5deg);  
+   -ms-transform: skew(5deg) rotate(5deg);  
+   -o-transform: skew(5deg) rotate(5deg);  
+   transform: skew(5deg) rotate(5deg);  
+}  
+
+/**************** header styles ****************/
+#header {
+  background: #5197d7;
+  margin: 0 auto 0 auto;
+  font-family: Courier, monospace;
+  font-size: 1em;
+  line-height: 1.8em;
+  -moz-box-shadow: 0 5px 30px #aaa;
+  -webkit-box-shadow: 0 5px 30px #aaa;
+  box-shadow: 0 5px 30px #aaa;
+}
+#header .right {
+  float: right;
+}
+#header .row {
+  margin: 0 auto;
+  width: 860px;
+  overflow: auto;
+}
+#main_menu form {
+  display: inline-block;
+  padding-right: 5px;
+}
+#banner {
+  text-align:center;
+  background: red;
+  color: white;
+  font-weight:bold;
+}
+#main_menu {
+  background: #5197D7;
+  color: white;
+}
+#sub_menu {
+  background: #ffc;
+  color: black;
+  clear: right;
+}
+#header a{
+  font-weight:bold;
+  letter-spacing: 1px;
+  padding: 0 5px;
+}
+#header a:hover{ font-weight:bold; }
+#main_menu a { color:white; }
+#sub_menu a { color:black; }
+
+/**************** profile styles ****************/
+.info_field_right{
+  float:left;
+  margin-top:15px;
+  margin-bottom:15px;
+  margin-right:5px;
+}
+.info_field_left{
+  float:left;
+  margin-bottom:15px;
+  clear:both;
+}
+#authinfo, #stats{
+  border-collapse:collapse;
+  margin-right:15px;
+  margin-bottom:15px;
+}
+#authinfo th, td, #stats th, td{
+  padding-left:5px;
+  padding-right:5px;
+  border:1px solid #CCCCCC;
+}
+table.info{
+  border-collapse:collapse;
+}
+#update_info table{
+  border-collapse:collapse;
+}
+#update_info td{
+  border:0;
+}
+#update_info form{
+  border:2px;
+}
+
+#password_reset table{
+  border-collapse:collapse;
+}
+#password_reset td{
+  border:0;
+}
+#password_reset form{
+  border:2px;
+}
+
+/**************** source styles ****************/
+#source_frame{
+  width:500px;
+  height:400px;
+  border:1px solid #000000;
+}	
+#course_info{
+  border-top:1px solid #CCCCCC;
+}
+
+.rejudge_summary td {
+	width: 50px;
+	align: right;
+}
+
+.rejudge_summary td.no_change {
+  background: #DDDDDD;
+}
+
+.rejudge_summary td.change {
+  background: #FFFFFF;
+}
+
+.submission_list, #solved, #judge_table, #problem_list, #search_list, #standings, #students, #teachers, #teams, #submissions{
+  border-collapse:collapse;
+  margin-top:15px;
+  width:100%;
+}  
+
+.submission_list th, #solved th, #judge_table th, #problem_list th,  #search_list th, #standings th, #students th, #teachers th, #teams th, #submissions th{
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:0px;
+  border-bottom:2px solid #AAAAAA;
+  border-top:2px solid #AAAAAA;
+  border-right:1px solid #CCCCCC;
+  border-left:1px solid #CCCCCC;
+}  
+.submission_list td, #solved td, #judge_table td, #problem_list td,  #search_list td, #standings td, #students td, #teachers td, #teams td, #submissions td{
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:0px;
+  border:1px solid #CCCCCC;
+} 
+.accepted{
+  color:#00AA33;
+  margin:0;
+  padding:0;
+}
+.rejected{
+  color:#FF0000;
+  margin:0;
+  padding:0;
+}
+.status {
+  text-align:center;
+}
+.runtime {
+  text-align:right;
+}
+.unjudged{
+  margin:0;
+  padding:0;
+}
+td.solved{
+  background-color:#99FF99;
+}
+td.attempted{
+  background-color:#FF9999;
+}
+td.partial{
+  background-color:#FFFF99;
+}
+/**************** judge submit ****************/
+#submit_table table{
+  border-top:1px solid #CCCCCC;
+}
+#submit_table td{
+  padding-top:15px;
+  border:0px;
+}
+/**************** judge styles ****************/
+table.prev_next{
+  width:100%; 
+  border-collapse:collapse; 
+  margin:0;
+}
+td.prev_next_l{
+  width:25%; 
+  text-align:left; 
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+td.prev_next_c{
+  width:50%; 
+  text-align:center;
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+td.prev_next_r{
+  width:25%; 
+  text-align:right; 
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+
+/**************** footer styles ****************/
+#footer {
+  margin:auto;
+  padding-bottom: 5px;
+  width: 850px;
+  text-shadow: 0px 2px 3px white;
+}		  
+
+#footer_left, #footer_right {
+  display: inline-block;
+}
+#footer_right {
+  float: right;
+}
+
+/************* submission styles *********/
+div.privilegedinfobox {
+	border:3px solid #AA6666; 
+	padding:4px;
+	margin-top: 10px;
+}
+div.infobox {
+	border:3px solid #6666AA; 
+	padding:4px;
+	margin-top: 10px;
+}
+
+#extrainfo p { 
+	border:1px solid #CCCCCC; 
+	padding:5px;
+}
+.infofile p { 
+	border:1px solid #CCCCCC; 
+	padding:5px;
+}
+
+#mailtable th {
+    border: 0;
+}
+#mailtable td{
+    border: 0;
+}
+
+/*************** clar stuff ***************/
+
+table.clar_header {
+    width : 100%;
+    padding: 0px;
+    margin: 0px;
+    border-spacing: 0px;
+}
+.clar_header th {
+    padding-left : 0px;
+    margin-left: 0px;
+    vertical-align:middle;
+    text-align:left;
+}
+
+.clar_header td {
+    border: 0px;
+    padding-right : 0px;
+    margin-right: 0px;
+    vertical-align:middle;
+    text-align:right;
+}
+/*
+form.queueform{
+    float:right;
+    display:inline;
+}
+*/
+.clar_reply {
+    background-color: #e0e0e0; 
+    padding: 1em;
+}
+
+#clarbox {
+width: 100%;
+text-align:center;
+height:4ex;
+}
+
+#newclar {
+  text-align:center;
+  margin: 0 auto;
+  padding:3px;
+  color:red;
+  border: solid black 2px;
+  font-weight:bold;
+}
+
+div.newanswer {
+  padding:2px;
+  border: solid black 1px;
+}
+
+
+/************* print styles **************/
+@media print {
+
+  a { text-decoration:none; }
+ 
+  #header { display:none; }
+
+  body { background-color: white;}
+
+  #teachernav, #adminnav, #studentnav { display:none; }
+  
+  .problemheader a { display:none; }
+
+  .container {
+    width: 100%;
+    height:100%;
+    color: black;
+    border:none;
+    padding: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .container:before, .container:after { display: none; }
+}
+
+/**************** login styles ****************/
+
+
+div#login_error{
+    margin: 1em;
+    text-align: center; 
+}
+#login_error span{
+    padding: 5px;
+    border: solid grey 1px;
+}
+
+#login_pw_no_cas {
+    padding: 1em;
+    width: 100%;
+    display: inline-block;
+    text-align: center; 
+}
+
+#login_pw {
+    padding: 1em;
+    position: relative;
+    width: 45%;
+    display: inline-block;
+    float:right;
+    border-left: 1px solid;
+    text-align: center;
+}
+
+#login_cas {
+    padding: 1em;
+    position: relative;
+    width: 45%;
+    display: inline-block;
+    float:left;
+    text-align: center;
+}
+
+
+.container {
+  width: auto;
+  min-width: 800px;
+  margin: 10px;
+}
+table#tablelegend {
+  margin-top: 15px;
+}
+td.solved{
+  background-color:#99FF99;
+}
+td.solvedfirst{
+  background-color:#008800;
+  font-weight: bold;
+  color: white;
+}
+td.attempted{
+  background-color:#FF9999;
+}
+td.pending{
+  background-color:#9999FF;
+}
+td.latinos { background-color: #FFFFAA; }
+
+tr.highlight {
+	background-color: #EEEEFF;
+	font-weight: bold;
+}img.title {margin: 5px 0px 10px 0px; }
+</style>
+
+<!--HEADHOOK-->
+ </head>
+
+<body>
+
+
+<div class="container">
+
+
+<h1>Simulador de Scoreboard</h1><br><table>
+<tbody><tr></tr></tbody></table>
+<table id="tablelegend"><tbody><tr><td class="latinos">Team de Latinoamerica</td><td class="solvedfirst">First to solve problem</td><td class="solved">Solved problem</td><td class="attempted">Attempted problem</td><td class="pending">Pending judgement</td></tr></tbody></table>
+<h1 >Minuto Actual: 10<br></h1>
+<table id = standings><tbody ><tr ><th >Pos</th>
+<th >Team</th>
+<th >Solved</th>
+<th >Time</th>
+<th >A</th>
+<th >B</th>
+<th >C</th>
+<th >D</th>
+<th >E</th>
+<th >F</th>
+<th >G</th>
+<th >H</th>
+<th >I</th>
+<th >J</th>
+<th >K</th>
+<th >L</th>
+</tr>
+<tr ><td >1</td>
+<td >Aalto University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >2</td>
+<td >Alexandria University - Faculty of Engineering</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >3</td>
+<td >Altai State Technical University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >4</td>
+<td >American University of Sharjah</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >5</td>
+<td >Bangladesh University of Engineering and Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >6</td>
+<td >Beijing University of Posts and Telecommunications</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >7</td>
+<td >Belarus State University of Informatics and Radioelectronics</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >8</td>
+<td >Belarusian State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >9</td>
+<td >Cairo University - Faculty of Computers and Information</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >10</td>
+<td >Carnegie Mellon University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >11</td>
+<td >Charles University in Prague</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >12</td>
+<td >Chennai Mathematical Institute</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >13</td>
+<td >College of William and Mary</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >14</td>
+<td >Delft University of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >15</td>
+<td >Duke University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >16</td>
+<td >Eindhoven University of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >17</td>
+<td >Fudan University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >18</td>
+<td >Fuzhou University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >19</td>
+<td >Georgia Institute of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >20</td>
+<td >German University in Cairo</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >21</td>
+<td >Graduate University of the Chinese Academy of Sciences</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >22</td>
+<td >Harvard University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >23</td>
+<td >Hong Kong University of Science and Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >24</td>
+<td class=latinos>ITESM Campus Puebla</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >25</td>
+<td >Illinois Institute of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >26</td>
+<td >Indian Institute of Technology - Delhi</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >27</td>
+<td >Indian Institute of Technology - Kanpur</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >28</td>
+<td >Indian Institute of Technology - Madras</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >29</td>
+<td >Institut Teknologi Bandung</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >30</td>
+<td class=latinos>Instituto Tecnológico de Aeronautica</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >31</td>
+<td class=latinos>Instituto Tecnológico de Santo Domingo</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >32</td>
+<td >International Institute of Information Technology - Hyderabad</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >33</td>
+<td >International Islamic University Malaysia</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >34</td>
+<td >Iowa State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >35</td>
+<td >Jagiellonian University in Krakow</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >36</td>
+<td >Kazakh-British Technical University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >37</td>
+<td >Korea University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >38</td>
+<td >Kyoto University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >39</td>
+<td >Massachusetts Institute of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >40</td>
+<td >Messiah College</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >41</td>
+<td >Moscow Institute of Physics & Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >42</td>
+<td >Moscow State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >43</td>
+<td >Nanyang Technological University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >44</td>
+<td >National Taiwan University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >45</td>
+<td >National Technical University "Kharkiv Polytechnic Institute"</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >46</td>
+<td >National University of Defense Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >47</td>
+<td >National University of Singapore</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >48</td>
+<td >Nizhny Novgorod State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >49</td>
+<td >Peking University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >50</td>
+<td class=latinos>Pontificia Universidad Católica del Perú</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >51</td>
+<td >Poznan University of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >52</td>
+<td >Princeton University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >53</td>
+<td >Saratov State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >54</td>
+<td >Seoul National University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >55</td>
+<td >Shahjalal University of Science and Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >56</td>
+<td >Shanghai Jiao Tong University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >57</td>
+<td >Sharif University of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >58</td>
+<td >Sichuan University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >59</td>
+<td >Software Engineering Institute of East China Normal University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >60</td>
+<td >St. Petersburg State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >61</td>
+<td >St. Petersburg State University of IT, Mechanics and Optics</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >62</td>
+<td >Stanford University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >63</td>
+<td >Taurida V.I. Vernadsky National University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >64</td>
+<td >The Chinese University of Hong Kong</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >65</td>
+<td >The University of Electro-Communications</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >66</td>
+<td >Tianjin University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >67</td>
+<td >Tomsk State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >68</td>
+<td >Tsinghua University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >69</td>
+<td >Udmurt State University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >70</td>
+<td >Ufa State Aviation Technical University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >71</td>
+<td class=latinos>Universidad Nacional de Colombia - Bogotá</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >72</td>
+<td class=latinos>Universidad Nacional de Córdoba - FaMAF</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >73</td>
+<td class=latinos>Universidad Nacional de Ingeniería</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >74</td>
+<td class=latinos>Universidad Tecnológica de la Mixteca</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >75</td>
+<td class=latinos>Universidad de Buenos Aires - FCEN</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >76</td>
+<td class=latinos>Universidad de Guanajuato - CIMAT</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >77</td>
+<td class=latinos>Universidad de La Habana</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >78</td>
+<td class=latinos>Universidad de los Andes</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >79</td>
+<td class=latinos>Universidade Federal de Campina Grande</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >80</td>
+<td class=latinos>Universidade Federal de Pernambuco</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >81</td>
+<td class=latinos>Universidade Federal do Paraná</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >82</td>
+<td class=latinos>Universidade Federal do Rio de Janeiro (DCC-UFRJ)</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >83</td>
+<td >Universitat Politècnica de Catalunya</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >84</td>
+<td >University of Alberta</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >85</td>
+<td >University of British Columbia</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >86</td>
+<td >University of Bucharest</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >87</td>
+<td >University of Canterbury</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >88</td>
+<td >University of Cape Town</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >89</td>
+<td >University of Central Florida</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >90</td>
+<td >University of Chicago</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >91</td>
+<td >University of Electronic Science and Technology of China</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >92</td>
+<td >University of Illinois at Urbana-Champaign</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >93</td>
+<td >University of Latvia</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >94</td>
+<td >University of Minnesota - Twin Cities</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >95</td>
+<td >University of New South Wales</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >96</td>
+<td >University of Southern California</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >97</td>
+<td class=latinos>University of São Paulo - Institute of Mathematics and Statistics</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >98</td>
+<td >University of Tehran</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >99</td>
+<td >University of Tokyo</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >100</td>
+<td >University of Toronto</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >101</td>
+<td >University of Tulsa</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >102</td>
+<td >University of Warsaw</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >103</td>
+<td >University of Waterloo</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >104</td>
+<td >University of Wisconsin - Madison</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >105</td>
+<td >University of Wroclaw</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >106</td>
+<td >University of the Philippines - Diliman</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >107</td>
+<td >Ural Federal University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >108</td>
+<td >Volgograd State Technical University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >109</td>
+<td >Wuhan University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >110</td>
+<td >Zhejiang University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >111</td>
+<td >Zhejiang University of Technology</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><td >112</td>
+<td >Zhongshan (Sun Yat-sen) University</td>
+<td >0</td>
+<td >0</td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+<td ></td>
+</tr>
+<tr ><th colspan=4></th>
+<th >A</th>
+<th >B</th>
+<th >C</th>
+<th >D</th>
+<th >E</th>
+<th >F</th>
+<th >G</th>
+<th >H</th>
+<th >I</th>
+<th >J</th>
+<th >K</th>
+<th >L</th>
+</tr>
+<tr ><td colspan=4>Cantidad de Equipos que lo resolvieron</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+</tr>
+<tr ><td colspan=4>Cantidad de Intentos totales</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+<td >0</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+</body></html>
