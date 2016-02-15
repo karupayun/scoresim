@@ -16,7 +16,7 @@ encapsular = encapsularAttr ""
 
 -- encapsularAttr encierra con un formato un String, agregandole un atributo
 encapsularAttr :: String -> String -> String -> String
-encapsularAttr a e s = "<" ++ e ++ " " ++ a ++ ">" ++ s ++ "</" ++ e ++ ">" ++ "\n"
+encapsularAttr a f s = "<" ++ f ++ " " ++ a ++ ">" ++ s ++ "</" ++ f ++ ">" ++ "\n"
 
 printCelda :: String -> String
 printCelda = encapsular "td"
@@ -30,7 +30,7 @@ printProblems ps = concat $ map printProblem ps
 
 printName :: Team -> String
 printName t | latam t == Latino = encapsularAttr ("class=latinos") "td" $ name t
-            | latam t == My = encapsularAttr ("class=pending") "td" $ name t
+            | latam t == My = encapsularAttr ("class=my") "td" $ name t
             | otherwise = printCelda $ name t
 
 printTeam :: Team -> String
@@ -64,7 +64,7 @@ printCola :: [Team] -> String
 printCola ts = (printLetters $ length $ problems (ts!!0)) ++ printSolved ts ++ (printTriesToSolve ts)
 
 printTable :: [Team] -> Int -> String
-printTable ts i =  (++) (printPrevios ts i) $ encapsularAttr "id = standings" "table" $ encapsular "tbody" $ (printHeaders $ length $ problems (ts!!0)) ++ printTeams ts ++ printCola ts
+printTable ts i = (++) (printPrevios ts i) $ encapsularAttr "id = standings" "table" $ encapsular "tbody" $ (printHeaders $ length $ problems (ts!!0)) ++ printTeams ts ++ printCola ts
 
 -- generate: Dada una lista de teams y un entero que simboliza el tiempo transcurrido, genera un scoreboard.
 generate :: [Team] -> Int -> IO ()
