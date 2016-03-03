@@ -1,10 +1,10 @@
--- Module My
+-- Module UserTeams
 --   Se encarga de trabajar con los equipos que el usuario crea para competir en la simulación.
 --   Para eso va guardando la información de los equipos en un archivo interno "myTeams.txt"
 --   Ese archivo, de donde solo escribe, lo usará Teams para leer tus teams actuales y así 
 --      imprimirlos en el scoreboard generado.
 
-module My where
+module UserTeams where
 import Utils
 import Parser (cantProblems)
 import Data.Char (ord, toUpper)

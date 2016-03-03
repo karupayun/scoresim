@@ -9,8 +9,9 @@ import Generator (generate)
 import Threads (runAfterDelay,stopThreads)
 import Teams (tableTime)
 import Utils
+import Tipes
 import Score 
-import My 
+import State 
 import Control.Concurrent 
 
 type Delay = Int

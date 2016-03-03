@@ -1,9 +1,15 @@
 -- Modulo Utils
--- Funciones auxiliares y tipos que son usadas a lo largo del simulador.
+-- Funciones auxiliares que son usadas a lo largo del simulador.
 
 module Utils where
+import Tipes
 import Data.List (length, nub)
 import Data.Char (isSpace)
+
+-- bool : Función auxiliar para trabajar con Bools
+bool :: a -> a -> Bool -> a
+bool x _ False = x
+bool _ y True = y
 
 -- replace reemplaza un valor en una lista
 replace :: a -> Int -> [a] -> [a]
@@ -21,14 +27,25 @@ numUniques = length . nub
 eliminarEspacios :: [String] -> [String] 
 eliminarEspacios = map (reverse . (dropWhile isSpace) . reverse . (dropWhile isSpace))
 
-type Problem = Maybe (Int,Int)
-data Zone = Latino | My | Other deriving (Eq,Show)
-data Team = Team { name :: String
-               , solved :: Int
-               , penalization :: Int
-               , problems :: [Problem]
-               , latam :: Zone
-               , position :: Int
-               } deriving Show
+-- makeSubs inventa las posibles submissions dado la información final de un problema
+makeSubs :: Problem -> Submissions
+makeSubs NotTried = []
+makeSubs (Tried i) = []
+makeSubs (Solved (c,m)) = (True,m) : replicate (c-1) (False,m)
+
+-- reRank: Función Auxiliar, dado un Int y un team, le cambia el ranking.
+changeZone :: Zone -> Team -> Team
+changeZone z t = Team {
+             name = name t,
+             subs = subs t,
+             zone = z,
+             user = user t
+             }
+
+modifSubs :: Submissionss -> Team -> Team
+modifSubs sb t = Team{name = name t,
+                      subs = sb,
+                      zone = zone t,
+                      user = user t} 
 
 

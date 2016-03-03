@@ -1,50 +1,68 @@
+-- Modulo Teams
+--   El módulo lógico que trabaja con los equipos de un simulacro.
+--     Provee una función que dada la información de los equipos,
+--     calcula la tabla de los equipos ordenadas al minuto.
+
+
 module Teams where
-import Parser (teams, teamsDeLatinoamerica)
-import My (myTeams)
 import Utils
+import Tipes
 import Data.List (sortBy)
 
--- filterTime: Dado un minuto, filtra un problema que todavía no fue resuelto.
-filterTime :: Int -> Problem -> Problem
-filterTime i p = p >>= \(c,t) -> if (i < t) then Nothing else Just(c,t)
+-- countWA :: Dado un minuto, cuenta la cantidad de submission no aceptadas.
+countWA :: Int -> Submissions -> Int
+countWA m s = length $ filter (\(b,i) -> b == False && i <= m) s
 
--- probPoint: Dado un minuto, calcula el puntaje actual de ese problema
-probPoint :: Int -> Problem -> (Int,Int)
-probPoint i p = maybe (0,0) (\(xs,ys) -> (1, ys + 20 * xs - 20)) $ filterTime i p
+-- subsProb: Dado un minuto, calcula la situación de un problema dadas las submissions.
+subsProb :: Int -> Submissions -> Problem
+subsProb m s | m < firstSB = NotTried
+               | m < firstAC = Tried $ countWA m s
+               | m < firstAC = Solved (1+countWA firstAC s, firstAC)              
+                where firstAC = foldl (\ac (b,i) -> if b then min ac i else ac) 301 s 
+                      firstSB = foldl (\ac (_,i) -> min ac i ) 301 s 
 
--- teamPoint: Dado un minuto, calcula el puntaje actual de ese equipo.
-teamPoint :: Int -> [Problem] -> (Int,Int)
-teamPoint i ps = foldl1 addVectors $ map (probPoint i) ps 
+-- probPoint: Calcula el puntaje real de un problema
+probPoint :: Problem -> (Int,Int)
+probPoint NotTried = (0,0) 
+probPoint (Tried _) = (0,0) 
+probPoint (Solved (i,t)) = (1,t+20*i-20) 
 
--- better: compara dos teams
-better :: Team -> Team -> Ordering
-better t1 t2 | solved t1 /= solved t2 = compare (solved t2) (solved t1)
-             | penalization t1 /= penalization t2 = compare (penalization t1) (penalization t2)
-             | otherwise = compare (name t1) (name t2)
+-- teamPoint: Dado un minuto, calcula el puntaje actual de este equipo.
+teamPoint :: Int -> Submissionss -> (Int,Int)
+teamPoint i ss = foldl1 addVectors $ map (probPoint . subsProb i) ss 
 
 -- reRank: Función Auxiliar, dado un Int y un team, le cambia el ranking.
-reRank :: (Int,Team) -> Team
-reRank (i,t) = Team {
-             name = name t,
+reRank :: (Int,Team2) -> Team2
+reRank (i,t) = Team2 {
+             name2 = name2 t,
              solved = solved t,
              penalization = penalization t,
              problems = problems t,
-             latam = latam t,
-             position = i}
+             zone2 = zone2 t,
+             user2 = user2 t,
+             position = i
+            }
 
--- TableTime: Dado un minuto, devuelve la información de los equipos
---                del simulacro al minuto i.
-tableTime :: Int -> IO [Team]
-tableTime i = do ts <- teams 
-                 lat <- teamsDeLatinoamerica  
-                 my <- myTeams           
-                 let p = foldr (\t acc -> Team{
-                             name = name t,
-                             solved = fst (teamPoint i $ problems t),
-                             penalization = snd (teamPoint i $ problems t),
-                             problems = map (filterTime i) $ problems t,
-                             latam = if ((name t) `elem` lat) then Latino else if ((name t) `elem` map name my) then My else Other,
-                             position = position t}:acc) [] (ts++my)
-                 return $ map reRank $ zip [1..] $ sortBy better p
+-- better: compara dos teams
+better :: Team2 -> Team2 -> Ordering
+better t1 t2 | solved t1 /= solved t2 = compare (solved t2) (solved t1)
+             | penalization t1 /= penalization t2 = compare (penalization t1) (penalization t2)
+             | otherwise = compare (name2 t1) (name2 t2)
+
+-- crearTabla: Dado un minuto del simulacro y los equipos, lo transforma a forma mostrable y lo ordena según el formato usado para las competencias.
+--                   Este Contest está listo para ser mostrado.
+crearTabla :: Int -> Teams -> Tabla
+crearTabla i ts = let t = foldr (\t acc -> Team2 {
+                                     name2 = name t,
+                                     solved = fst (teamPoint i $ subs t),
+                                     penalization = snd (teamPoint i $ subs t),
+                                     problems = map (subsProb i) $ subs t,
+                                     zone2 = zone t,
+                                     position = 0,
+                                     user2 = user t
+                                    }:acc) [] ts                             
+                     in (i, map reRank $ zip [1..] $ sortBy better t)
+
+
                  
                 

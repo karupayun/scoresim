@@ -5,27 +5,37 @@
 
 module Score where
 import Utils
-import Parser (htmlIn)
+import Tipes
+import Parser (htmlIn, teamsParseados)
 import Network.HTTP
+
 
 -- get: Dado un url, lee una página y la devuelve como String
 get :: String -> IO String
 get url = simpleHTTP (getRequest url) >>= getResponseBody
 
--- scanPage: Dado un url, lee una página y la copia al archivo con el
---           que va a trabajar el scoreboard.
-scanPage :: String -> IO ()
-scanPage url = do s <- get url
-                  writeFile htmlIn s
+-- grabarSimulacro: Dado un archivo en html y un path, parsea el scoreboard y lo graba para ser usado posteriormente.
+grabarSimulacro :: Html -> Path -> IO ()
+grabarSimulacro h p = do writeFile htmlIn h
+                         t <- teamsParseados
+                         writeFile  ("Scores/" ++ p) $ show t
 
--- scanFile: Dado un path, lee un archivo y lo copia al archivo con el
---             que va a trabajar el scoreboard.
-scanFile :: String -> IO ()
-scanFile path = do s <- readFile path 
-                   writeFile htmlIn s
+-- scanPage: Dado un url, y un nombre de archivo, scanea la página, la parsea y copia la información del simulacro al archivo.
+scanPage :: Url -> Path -> IO ()
+scanPage u p = do s <- get u
+                  grabarSimulacro s p
 
--- elegirSimulacro: Elije un simulacro ya cargado.                 
-elegirSimulacro :: Int -> IO ()
-elegirSimulacro i | i == 2015 = scanFile $ "Scores/wf" ++ show i ++ ".html"
-elegirSimulacro i = scanPage $ "http://static.kattis.com/icpc/wf" ++ show i ++ "/"
-                       
+-- scanFile: La misma función anterior pero para leerlo desde un archivo interno (formato html) de la carpeta Html.
+scanFile :: Path -> Path -> IO ()
+scanFile h p = do s <- readFile $ "Html/" ++ h 
+                  grabarSimulacro s p
+
+-- chooseScore: Dado un archivo de la carpeta Scores ya previamente cargado, 
+--                        devuelve la lista de los teams que participaron.
+chooseScore :: Path -> IO Teams
+chooseScore p = do s <- readFile $ "Scores/" ++ p
+                   return $ read s
+
+
+
+
