@@ -18,7 +18,7 @@ get url = simpleHTTP (getRequest url) >>= getResponseBody
 grabarSimulacro :: Html -> Path -> IO ()
 grabarSimulacro h p = do writeFile htmlIn h
                          t <- teamsParseados
-                         writeFile  ("Scores/" ++ p) $ show t
+                         writeFile  ("Scores/" ++ p ++ ".txt") $ show t
 
 -- scanPage: Dado un url, y un nombre de archivo, scanea la página, la parsea y copia la información del simulacro al archivo.
 scanPage :: Url -> Path -> IO ()
@@ -27,13 +27,13 @@ scanPage u p = do s <- get u
 
 -- scanFile: La misma función anterior pero para leerlo desde un archivo interno (formato html) de la carpeta Html.
 scanFile :: Path -> Path -> IO ()
-scanFile h p = do s <- readFile $ "Html/" ++ h 
+scanFile h p = do s <- readFile $ "Html/" ++ h ++ ".html"
                   grabarSimulacro s p
 
 -- chooseScore: Dado un archivo de la carpeta Scores ya previamente cargado, 
 --                        devuelve la lista de los teams que participaron.
 chooseScore :: Path -> IO Teams
-chooseScore p = do s <- readFile $ "Scores/" ++ p
+chooseScore p = do s <- readFile $ "Scores/" ++ p ++ ".txt"
                    return $ read s
 
 

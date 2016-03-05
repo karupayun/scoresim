@@ -30,18 +30,18 @@ printProblem (Solved (i,t)) = encapsularAttr ("class=solved") "td" $ show i ++ "
 printProblems :: [Problem] -> String
 printProblems ps = concat $ map printProblem ps
 
-printName :: Team2 -> String
+printName :: TeamLive -> String
 printName t | zone2 t == Latino = encapsularAttr ("class=latinos") "td" $ name2 t
             | zone2 t == User = encapsularAttr ("class=user") "td" $ name2 t 
             | otherwise = printCelda $ name2 t
 
-printTeam :: Team2 -> String
+printTeam :: TeamLive -> String
 printTeam t = encapsular "tr" $ (printCelda . show $ position t) ++ (printName t) ++ (printCelda . show $ solved t) ++ (printCelda . show $ penalization t) ++ (printProblems $ problems t)
 
-printTeams :: Teams2 -> String
+printTeams :: TeamsLive -> String
 printTeams ts = concat $ map printTeam ts
 
-printPrevios :: Teams2 -> Int -> String
+printPrevios :: TeamsLive -> Int -> String
 printPrevios ts i = encapsular "h1" $ "Minuto Actual: " ++ (show i) ++ "<br>"
 
 printHeaders :: Int -> String
@@ -59,19 +59,19 @@ solvedProb :: Problem -> Bool
 solvedProb (Solved _) = True
 solvedProb _ = False
 
-totalSolved :: Teams2 -> [Int]
+totalSolved :: TeamsLive -> [Int]
 totalSolved ts = foldl (\acc t -> zipWith (+) (map (bool 0 1 . solvedProb) (problems t)) acc) (repeat 0) ts
 
-totalTriesToSolved :: Teams2 -> [Int]
+totalTriesToSolved :: TeamsLive -> [Int]
 totalTriesToSolved ts = foldl (\acc t -> zipWith (+) (map intentosProb (problems t)) acc) (repeat 0) ts
 
-printSolved :: Teams2 -> String
+printSolved :: TeamsLive -> String
 printSolved ts = encapsular "tr" $ (encapsularAttr "colspan=4" "td" "Cantidad de Equipos que lo resolvieron") ++ ( concat $ map (\n -> printCelda $ show n) $ totalSolved ts)
 
-printTriesToSolve :: Teams2 -> String
+printTriesToSolve :: TeamsLive -> String
 printTriesToSolve ts = encapsular "tr" $ (encapsularAttr "colspan=4" "td" "Cantidad de Intentos totales") ++ ( concat $ map (\n -> printCelda $ show n) $ totalTriesToSolved ts)
 
-printCola :: Teams2 -> String
+printCola :: TeamsLive -> String
 printCola ts = (printLetters $ length $ problems (ts!!0)) ++ printSolved ts ++ (printTriesToSolve ts)
 
 printTable :: Tabla -> String

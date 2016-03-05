@@ -32,8 +32,8 @@ teamPoint :: Int -> Submissionss -> (Int,Int)
 teamPoint i ss = foldl1 addVectors $ map (probPoint . subsProb i) ss 
 
 -- reRank: Función Auxiliar, dado un Int y un team, le cambia el ranking.
-reRank :: (Int,Team2) -> Team2
-reRank (i,t) = Team2 {
+reRank :: (Int,TeamLive) -> TeamLive
+reRank (i,t) = TeamLive {
              name2 = name2 t,
              solved = solved t,
              penalization = penalization t,
@@ -44,7 +44,7 @@ reRank (i,t) = Team2 {
             }
 
 -- better: compara dos teams
-better :: Team2 -> Team2 -> Ordering
+better :: TeamLive -> TeamLive -> Ordering
 better t1 t2 | solved t1 /= solved t2 = compare (solved t2) (solved t1)
              | penalization t1 /= penalization t2 = compare (penalization t1) (penalization t2)
              | otherwise = compare (name2 t1) (name2 t2)
@@ -52,7 +52,7 @@ better t1 t2 | solved t1 /= solved t2 = compare (solved t2) (solved t1)
 -- crearTabla: Dado un minuto del simulacro y los equipos, lo transforma a forma mostrable y lo ordena según el formato usado para las competencias.
 --                   Este Contest está listo para ser mostrado.
 crearTabla :: Int -> Teams -> Tabla
-crearTabla i ts = let t = foldr (\t acc -> Team2 {
+crearTabla i ts = let t = foldr (\t acc -> TeamLive {
                                      name2 = name t,
                                      solved = fst (teamPoint i $ subs t),
                                      penalization = snd (teamPoint i $ subs t),

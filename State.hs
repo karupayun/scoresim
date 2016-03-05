@@ -10,7 +10,7 @@ import Data.Maybe
 import Control.Monad.Trans (liftIO)
 import Data.IORef 
 import Control.Monad.State
-
+import Control.Lens
 --type St = StateT ScoreState IO
 type St = Handler App App 
 
@@ -24,16 +24,20 @@ getScore = do
 putScore :: ScoreState -> St ()
 putScore s = do
     g <- get
-    liftIO $ writeIORef (_st g) s
-    put g               
+    liftIO $ atomicWriteIORef (_st g) s
+
+modifyScore :: (ScoreState -> ScoreState) -> St ()
+modifyScore f = do
+    g <- get
+    liftIO $ atomicModifyIORef (_st g) (\x -> (f x,()))
+           
     
 
 
 -- Cambiar el tipo a un record
 
 modifCP :: CantProblems -> St ()
-modifCP x = do s <- getScore
-               putScore ScoreState {cp = x, ut = ut s, ot = ot s, ts = ts s, dl = dl s}
+modifCP x = modifyScore (\st -> set cp x st) -- TODO
 
 modifUT :: UserTeams -> St ()
 modifUT x = do s <- getScore

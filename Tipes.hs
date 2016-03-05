@@ -14,7 +14,7 @@ data Team = Team { name :: String, -- Información de un equipo
                    user :: String
                } deriving (Read, Show)
 
-data Team2 = Team2 { name2 :: String, -- Información de un equipo durante una competencia
+data TeamLive = TeamLive { name2 :: String, -- Información de un equipo durante una competencia
                      solved :: Int,
                      penalization :: Int,
                      problems :: Problems,
@@ -36,9 +36,9 @@ data ScoreState = ScoreState {
 type CantProblems = Maybe Int
 type Minute = Int
 type Teams = [Team] 
-type Teams2 = [Team2] 
+type TeamsLive = [TeamLive] 
 type Contest = (CantProblems, Teams) 
-type Tabla = (Minute, Teams2) 
+type Tabla = (Minute, TeamsLive) 
 type Path = String
 type Url = String
 type Html = String

@@ -26,6 +26,7 @@ import qualified Heist.Interpreted as I
 ------------------------------------------------------------------------------
 import           Application
 import           Tipes
+import           Form
 import           State
 import Control.Monad.IO.Class
 
@@ -62,6 +63,9 @@ handleNewUser = method GET handleForm <|> method POST handleFormSubmit
     handleForm = render "new_user"
     handleFormSubmit = registerUser "login" "password" >> redirect "/"
 
+
+
+
 ------------------------------------------------------------------------------
 -- | Imprimir State
 fscore :: Handler App App ()
@@ -78,8 +82,8 @@ routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
          , ("/score2", fscore)
---         , ("/new_contest", handleNewContest) -- 2 String
---         , ("/choose", handleChoose)          -- 1 String
+         , ("/new_contest", handleNewContest) -- 2 String
+         , ("/choose", handleChoose)          -- 1 String
 --         , ("/new_team", handleNewTeam)       -- String
 --         , ("/delete_team", handleDeleteTeam)
 --         , ("/teams", handleTeams)
