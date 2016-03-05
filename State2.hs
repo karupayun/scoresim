@@ -1,55 +1,38 @@
 module State where
-import Application
-import Snap.Snaplet
 import Data.Time.Clock
 import Utils
 import Tipes
 import Teams (crearTabla)
 import Data.Maybe
---import Control.Monad.Trans.State 
+import Control.Monad.Trans.State 
 import Control.Monad.Trans (liftIO)
-import Data.IORef 
-import Control.Monad.State
-
---type St = StateT ScoreState IO
-type St = Handler App App 
 
 
-getScore :: St ScoreState
-getScore = do
-    g <- get
-    q <- liftIO $ readIORef (_st g)
-    return q
-
-putScore :: ScoreState -> St ()
-putScore s = do
-    g <- get
-    liftIO $ writeIORef (_st g) s
-    put g               
-    
 
 
+
+type St = StateT ScoreState IO
 -- Cambiar el tipo a un record
 
 modifCP :: CantProblems -> St ()
-modifCP x = do s <- getScore
-               putScore ScoreState {cp = x, ut = ut s, ot = ot s, ts = ts s, dl = dl s}
+modifCP x = do s <- get
+               put ScoreState {cp = x, ut = ut s, ot = ot s, ts = ts s, dl = dl s}
 
 modifUT :: UserTeams -> St ()
-modifUT x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = x, ot = ot s, ts = ts s, dl = dl s}
+modifUT x = do s <- get
+               put ScoreState {cp = cp s, ut = x, ot = ot s, ts = ts s, dl = dl s}
 
 modifOT :: OficialTeams -> St ()
-modifOT x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = x, ts = ts s, dl = dl s}
+modifOT x = do s <- get
+               put ScoreState {cp = cp s, ut = ut s, ot = x, ts = ts s, dl = dl s}
 
 modifTS :: TimeState -> St ()
-modifTS x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = x, dl = dl s}
+modifTS x = do s <- get
+               put ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = x, dl = dl s}
 
 modifDL :: Delay -> St ()
-modifDL x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = ts s, dl = x}
+modifDL x = do s <- get
+               put ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = ts s, dl = x}
 
 
 --runStateT :: s -> m (a, s)
@@ -66,14 +49,9 @@ modifDL x = do s <- getScore
                 
   --              put (st, x)
 
--- vacio :: ScoreState
-vacio :: ScoreState
-vacio = ScoreState {cp = Nothing, ut = [], ot = [], ts = NotChoose, dl = 0}
-    
-
--- initSimu: Inicializa el simulador.
-initSimu :: St ()
-initSimu = putScore vacio
+-- init: Inicializa el simulador.
+init :: OficialTeams -> St ()
+init ot = put ScoreState {cp = Nothing, ut = [], ot = [], ts = NotChoose, dl = 0}
 
 -- addOficialTeams: Dado los teams oficiales, los carga.
 addOficialTeams :: Int -> OficialTeams -> St ()
@@ -82,7 +60,7 @@ addOficialTeams cp ot = do modifCP $ Just cp
 
 -- changeDelay: Altera el delay entre actualizaciones, solo si el contest no arrancó. Útil para analizar scoreboard sin participar.
 changeDelay :: Int -> St ()
-changeDelay d' = do st <- getScore
+changeDelay d' = do st <- get
                     case ts st of Stop -> modifDL d'
                                   _ -> return ()
 
@@ -90,33 +68,33 @@ changeDelay d' = do st <- getScore
 
 -- start inicializa un simulacro.
 start :: St ()
-start = do st <- getScore
+start = do st <- get
            tm <- liftIO getCurrentTime 
            case ts st of Stop -> modifTS $ Running tm 
                          _ -> return ()
 
 -- stop frena el simulacro.
 stop :: St ()
-stop = do st <- getScore
+stop = do st <- get
           case ts st of NotChoose -> return ()
                         _ -> modifTS Stop
 
 -- pause pausa un simulacro, por si es necesario.
 pause :: St ()
-pause = do st <- getScore
+pause = do st <- get
            tp <- liftIO getCurrentTime 
            case ts st of Running tm -> modifTS $ Pause tm tp 
                          _ -> return ()
  
 -- unpause reanuda un simulacro, si éste está pausado, ignorando el tiempo pausado.
 unpause :: St ()
-unpause = do st <- getScore
+unpause = do st <- get
              tu <- liftIO getCurrentTime 
              case ts st of Pause tm tp -> modifTS $ Running $ addUTCTime (diffUTCTime tu tp) tm 
                            _ -> return ()
 -- getMinute :: Devuelve el minuto actual del simulacro
 getMinute :: St Int
-getMinute = do st <- getScore
+getMinute = do st <- get
                t <- liftIO getCurrentTime
                case ts st of Running tm -> return $ div (truncate $ diffUTCTime t tm) $ dl st
                              Pause tm tp -> return $ div (truncate $ diffUTCTime tm tp) $ dl st
@@ -124,13 +102,13 @@ getMinute = do st <- getScore
 
 -- getContest :: Devuelve el simulacro actual, listo para ser mostrado
 getContest :: St Tabla
-getContest = do st <- getScore
+getContest = do st <- get
                 m <- getMinute                
                 return $ crearTabla m (ut st ++ ot st)
 
 -- nameUsed :: Dado un nombre, devuelve si ya está usado.
 nameUsed :: String -> St Bool
-nameUsed s = do st <- getScore
+nameUsed s = do st <- get
                 let tt = (ut st ++ ot st)
                 let f = filter (\t -> name t == s) tt
                 return $ null f        
@@ -172,7 +150,7 @@ addSubmit = auxUT addSubmit'
 
 -- auxUT :: Función polimórfica para simplificar el trabajo con los teams de los usuarios.
 auxUT :: (a -> Int -> Teams -> Teams) -> a -> St ()
-auxUT f x = do st <- getScore
+auxUT f x = do st <- get
                case cp st of Nothing -> return ()
                              Just i -> modifUT $ f x i $ ut st
 

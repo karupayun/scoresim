@@ -2,6 +2,7 @@
 -- Tipos que son usados a lo largo del simulador.
 
 module Tipes where
+import Data.Time
 data Problem = Tried Int | Solved (Int,Int) | NotTried deriving (Read,Show)
 type Problems = [Problem]
 type Submissions = [(Bool, Int)]
@@ -21,6 +22,17 @@ data Team2 = Team2 { name2 :: String, -- Información de un equipo durante una c
                      position :: Int,
                      user2 :: String
                } --deriving Show
+data TimeState = NotChoose | Stop | Running UTCTime | Pause UTCTime UTCTime deriving (Show, Read)
+type OficialTeams = Teams
+type UserTeams = Teams
+type Delay = Int
+data ScoreState = ScoreState { 
+               cp :: CantProblems
+               , ut :: UserTeams
+               , ot :: OficialTeams
+               , ts :: TimeState
+               , dl :: Delay
+               } deriving (Show, Read)
 type CantProblems = Maybe Int
 type Minute = Int
 type Teams = [Team] 
