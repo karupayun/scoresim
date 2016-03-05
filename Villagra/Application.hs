@@ -11,6 +11,7 @@ import Snap.Snaplet
 import Snap.Snaplet.Heist
 import Snap.Snaplet.Auth
 import Snap.Snaplet.Session
+import Data.IORef 
 
 ------------------------------------------------------------------------------
 data App = App

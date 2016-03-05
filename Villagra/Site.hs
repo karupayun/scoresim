@@ -145,16 +145,7 @@ changeOnlyString s a = App {
               _heist = _heist a
             , _sess = _sess a
             , _auth = _auth a
-            , _st = s
-            , _st2 = _st2}
-
-changeOnlyString2 :: String -> App -> IO App
-changeOnlyString2 s a = App {
-              _heist = _heist a
-            , _sess = _sess a
-            , _auth = _auth a
-            , _st = s
-            , _st2 = _st2}
+            , _st = s}
 
 ------------------------------------------------------------------------------
 --  | Change String
