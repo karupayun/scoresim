@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module State where
 import Application
 import Snap.Snaplet
@@ -6,6 +7,7 @@ import Utils
 import Tipes
 import Teams (crearTabla)
 import Data.Maybe
+import           Snap.Snaplet.Auth
 --import Control.Monad.Trans.State 
 import Control.Monad.Trans (liftIO)
 import Data.IORef 
@@ -13,6 +15,7 @@ import Control.Monad.State
 import Control.Lens
 --type St = StateT ScoreState IO
 type St = Handler App App 
+type St2 = Handler App (AuthManager App)
 
 
 getScore :: St ScoreState
@@ -31,29 +34,30 @@ modifyScore f = do
     g <- get
     liftIO $ atomicModifyIORef (_st g) (\x -> (f x,()))
            
-    
+
+modifyScore2 :: (ScoreState -> ScoreState) -> St2 ()
+modifyScore2 f = do
+    g <- get
+    liftIO $ atomicModifyIORef (_st g) (\x -> (f x,()))
+               
 
 
 -- Cambiar el tipo a un record
 
 modifCP :: CantProblems -> St ()
-modifCP x = modifyScore (\st -> set cp x st) -- TODO
+modifCP x = modifyScore (\st -> set cp x st) 
 
-modifUT :: UserTeams -> St ()
-modifUT x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = x, ot = ot s, ts = ts s, dl = dl s}
+modifUT :: UserTeams -> St2 ()
+modifUT x = modifyScore2 (\st -> set ut x st)
 
-modifOT :: OficialTeams -> St ()
-modifOT x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = x, ts = ts s, dl = dl s}
+modifOT :: OfitialTeams -> St ()
+modifOT x = modifyScore (\st -> set ot x st)
 
 modifTS :: TimeState -> St ()
-modifTS x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = x, dl = dl s}
+modifTS x = modifyScore (\st -> set ts x st)
 
 modifDL :: Delay -> St ()
-modifDL x = do s <- getScore
-               putScore ScoreState {cp = cp s, ut = ut s, ot = ot s, ts = ts s, dl = x}
+modifDL x = modifyScore (\st -> set dl x st)
 
 
 --runStateT :: s -> m (a, s)
@@ -72,23 +76,32 @@ modifDL x = do s <- getScore
 
 -- vacio :: ScoreState
 vacio :: ScoreState
-vacio = ScoreState {cp = Nothing, ut = [], ot = [], ts = NotChoose, dl = 0}
+vacio = ScoreState {_cp = Nothing, _ut = [], _ot = [], _ts = NotChoose, _dl = 0}
     
 
 -- initSimu: Inicializa el simulador.
 initSimu :: St ()
 initSimu = putScore vacio
 
--- addOficialTeams: Dado los teams oficiales, los carga.
-addOficialTeams :: Int -> OficialTeams -> St ()
-addOficialTeams cp ot = do modifCP $ Just cp
-                           modifUT ot
+
+addOfitialTeams' :: Int -> OfitialTeams -> St ()
+addOfitialTeams' cp ot = do 
+                            modifCP $ Just cp
+                            modifOT ot
+
+
+
+-- addOfitialTeams: Dado los teams oficiales, los carga.
+addOfitialTeams :: OfitialTeams -> St ()
+addOfitialTeams ot = do 
+            addOfitialTeams' (cantProblemsFromTeam ot) ot
+            modifTS Stop
 
 -- changeDelay: Altera el delay entre actualizaciones, solo si el contest no arrancó. Útil para analizar scoreboard sin participar.
 changeDelay :: Int -> St ()
 changeDelay d' = do st <- getScore
-                    case ts st of Stop -> modifDL d'
-                                  _ -> return ()
+                    case _ts st of Stop -> modifDL d'
+                                   _ -> return ()
 
 --execStateT :: Monad m => StateT s m a -> s -> m s 
 
@@ -96,57 +109,66 @@ changeDelay d' = do st <- getScore
 start :: St ()
 start = do st <- getScore
            tm <- liftIO getCurrentTime 
-           case ts st of Stop -> modifTS $ Running tm 
-                         _ -> return ()
+           case _ts st of Stop -> modifTS $ Running tm 
+                          _ -> return ()
 
 -- stop frena el simulacro.
 stop :: St ()
 stop = do st <- getScore
-          case ts st of NotChoose -> return ()
-                        _ -> modifTS Stop
+          case _ts st of NotChoose -> return ()
+                         _ -> modifTS Stop
 
 -- pause pausa un simulacro, por si es necesario.
 pause :: St ()
 pause = do st <- getScore
            tp <- liftIO getCurrentTime 
-           case ts st of Running tm -> modifTS $ Pause tm tp 
-                         _ -> return ()
+           case _ts st of Running tm -> modifTS $ Pause tm tp 
+                          _ -> return ()
  
 -- unpause reanuda un simulacro, si éste está pausado, ignorando el tiempo pausado.
 unpause :: St ()
 unpause = do st <- getScore
              tu <- liftIO getCurrentTime 
-             case ts st of Pause tm tp -> modifTS $ Running $ addUTCTime (diffUTCTime tu tp) tm 
-                           _ -> return ()
--- getMinute :: Devuelve el minuto actual del simulacro
+             case _ts st of Pause tm tp -> modifTS $ Running $ addUTCTime (diffUTCTime tu tp) tm 
+                            _ -> return ()
+
 getMinute :: St Int
-getMinute = do st <- getScore
+getMinute = do
+        m <- getMinute'
+        return $ min 300 m
+
+-- getMinute :: Devuelve el minuto actual del simulacro
+getMinute' :: St Int
+getMinute' = do 
+               st <- getScore
                t <- liftIO getCurrentTime
-               case ts st of Running tm -> return $ div (truncate $ diffUTCTime t tm) $ dl st
-                             Pause tm tp -> return $ div (truncate $ diffUTCTime tm tp) $ dl st
-                             _ -> return 0  
+               case _ts st of Running tm -> return $ div (truncate $ diffUTCTime t tm) $ 1
+                              Pause tm tp -> return $ div (truncate $ diffUTCTime tm tp) $ _dl st
+                              _ -> return 0  
+
+
 
 -- getContest :: Devuelve el simulacro actual, listo para ser mostrado
 getContest :: St Tabla
 getContest = do st <- getScore
-                m <- getMinute                
-                return $ crearTabla m (ut st ++ ot st)
+                m <- getMinute
+                return $ crearTabla m (_ut st ++ _ot st)
 
 -- nameUsed :: Dado un nombre, devuelve si ya está usado.
 nameUsed :: String -> St Bool
 nameUsed s = do st <- getScore
-                let tt = (ut st ++ ot st)
+                let tt = (_ut st ++ _ot st)
                 let f = filter (\t -> name t == s) tt
                 return $ null f        
 
 addTeam' :: (String, String) -> Int -> Teams -> Teams
-addTeam' (n,us) cp ts = let t = Team{
+addTeam' (us,n) _cp _ts = let t = Team{
                              name = n,
-                             subs = replicate cp [],
+                             subs = replicate _cp [],
                              zone = User,
                              user = us
                             }
-                        in t:ts
+                        in t:_ts
 
 deleteTeam' :: (String, String) -> Int -> Teams -> Teams
 deleteTeam' (us,n) _ = filter (\t -> name t /= n || user t /= us)  
@@ -154,31 +176,31 @@ deleteTeam' (us,n) _ = filter (\t -> name t /= n || user t /= us)
 
 -- addSubmit (user, name, nroProb, Ac?, min,  TotProb)
 addSubmit' :: (String, String, Int, Bool, Int) -> Int -> Teams -> Teams
-addSubmit' (us,nomb,nprob,ac,min) cp ts = map (\t -> if (name t /= nomb || user t /= us || cp < nprob) then t
+addSubmit' (us,nomb,nprob,ac,min) _cp _ts = map (\t -> if (name t /= nomb || user t /= us || _cp < nprob) then t
                                                  else (do let ss = subs t
                                                           let nss = replace ((ac,min) : (ss!!(nprob-1))) (nprob-1) ss
-                                                          modifSubs nss t)) ts
+                                                          modifSubs nss t)) _ts
 
 
 
--- addTeam :: Agrega un nuevo team
-addTeam :: (String, String) -> St ()
+-- addTeam :: Agrega un nuevo team (user, nombre de team)
+addTeam :: (String, String) -> St2 ()
 addTeam = auxUT addTeam'
 
 --deleteTeam
-deleteTeam :: (String, String) -> St ()
+deleteTeam :: (String, String) -> St2 ()
 deleteTeam = auxUT deleteTeam'
 
 -- addSubmit (user, name, nroProb, Ac?, minuto) agrega la submit a ese equipo.
-addSubmit :: (String, String, Int, Bool, Int) -> St ()
+addSubmit :: (String, String, Int, Bool, Int) -> St2 ()
 addSubmit = auxUT addSubmit'
 
 
 -- auxUT :: Función polimórfica para simplificar el trabajo con los teams de los usuarios.
-auxUT :: (a -> Int -> Teams -> Teams) -> a -> St ()
+auxUT :: (a -> Int -> Teams -> Teams) -> a -> St2 ()
 auxUT f x = do st <- getScore
-               case cp st of Nothing -> return ()
-                             Just i -> modifUT $ f x i $ ut st
+               case _cp st of Nothing -> return ()
+                              Just i -> modifUT $ f x i $ _ut st
 
 -- imprimirScoreboard :: State ScoreState ()
 -- cleanSubmits :: Limpie todas las submits

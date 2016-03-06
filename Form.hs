@@ -6,7 +6,9 @@ import           Text.Digestive
 import           Text.Digestive.Heist
 import           Text.Digestive.Snap
 import           Control.Applicative
+import           Snap.Snaplet.Auth
 --import           Snap.Core (writeText)
+import Generator
 import           Snap.Core
 import           Snap.Snaplet
 import           Snap.Snaplet.Heist (heistLocal, render)
@@ -43,18 +45,51 @@ handleChoose :: Handler App App ()
 handleChoose = do
   (view, result) <- runForm "choose" form1
   case result of
-    Just x  -> writeText $ text1 x
+    Just x  -> do t <- liftIO $ chooseScore (T.unpack $ text1 x) 
+                  addOfitialTeams t
+                  redirect "/"
     Nothing -> heistLocal (bindDigestiveSplices view) $ render "chooseform"
 
 handleNewContest :: Handler App App ()
 handleNewContest = do
   (view, result) <- runForm "new_contest" form2
   case result of
-    Just x  -> do (writeText $ text1 x)
-                  (writeText $ text2 x)
-                  liftIO $ scanFile (T.unpack $ text1 x) (T.unpack $ text2 x)
+    Just x  -> do liftIO $ scanFile (T.unpack $ text1 x) (T.unpack $ text2 x)
                   redirect "/"
     Nothing -> heistLocal (bindDigestiveSplices view) $ render "newcontestform"
+
+-- usuarioActivo : Función que devuelve el usuario activo, o "" si no hay ninguno
+usuarioActivo :: Handler App (AuthManager App) String
+usuarioActivo = do
+            us <- currentUser
+            return $ maybe "" (T.unpack . userLogin) us
+
+handleNewTeam :: Handler App (AuthManager App) ()
+handleNewTeam = do
+  (view, result) <- runForm "new_team" form1
+  us <- usuarioActivo
+  case result of
+    Just x  -> do addTeam (us, (T.unpack $ text1 x))
+                  redirect "/"
+    Nothing -> heistLocal (bindDigestiveSplices view) $ render "new_team"
+
+handleStart :: Handler App App ()
+handleStart = start >> redirect "/"
+
+handleStop :: Handler App App ()
+handleStop = stop >> redirect "/"
+
+handlePause :: Handler App App ()
+handlePause = pause >> redirect "/"
+
+handleUnpause :: Handler App App ()
+handleUnpause = unpause >> redirect "/"
+
+handleScore :: Handler App App ()
+handleScore = do 
+            c <- getContest
+            g <- liftIO $ generate c
+            writeText $ T.pack $ g
 
 --tweetForm :: (Monad m) => Form T.Text m Tweet
 --tweetForm = Tweet

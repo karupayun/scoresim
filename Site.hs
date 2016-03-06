@@ -64,35 +64,24 @@ handleNewUser = method GET handleForm <|> method POST handleFormSubmit
     handleFormSubmit = registerUser "login" "password" >> redirect "/"
 
 
-
-
-------------------------------------------------------------------------------
--- | Imprimir State
-fscore :: Handler App App ()
-fscore = do
-    sc <- getScore
-    writeText $ T.pack $ show sc
-
-
-
 ------------------------------------------------------------------------------
 -- | The application's routes.
 routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
-         , ("/score2", fscore)
          , ("/new_contest", handleNewContest) -- 2 String
          , ("/choose", handleChoose)          -- 1 String
---         , ("/new_team", handleNewTeam)       -- String
+         , ("/new_team", with auth handleNewTeam)       -- String
 --         , ("/delete_team", handleDeleteTeam)
 --         , ("/teams", handleTeams)
 --         , ("/new_submit", handleNewSubmit)
 --         , ("/delay", handleDelay)
---         , ("/start", handleStart)
---         , ("/score", handleScore)
---         , ("/pause", handlePause)
---         , ("/stop", handleStop)
+         , ("/start", handleStart)
+         , ("/score.html", handleScore)
+         , ("/pause", handlePause)
+         , ("/unpause", handleUnpause)
+         , ("/stop", handleStop)
          , ("",          serveDirectory "static")
          ]
 

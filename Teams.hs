@@ -17,7 +17,7 @@ countWA m s = length $ filter (\(b,i) -> b == False && i <= m) s
 subsProb :: Int -> Submissions -> Problem
 subsProb m s | m < firstSB = NotTried
                | m < firstAC = Tried $ countWA m s
-               | m < firstAC = Solved (1+countWA firstAC s, firstAC)              
+               | otherwise = Solved (1+countWA firstAC s, firstAC)              
                 where firstAC = foldl (\ac (b,i) -> if b then min ac i else ac) 301 s 
                       firstSB = foldl (\ac (_,i) -> min ac i ) 301 s 
 

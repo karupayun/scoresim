@@ -11,6 +11,12 @@ bool :: a -> a -> Bool -> a
 bool x _ False = x
 bool _ y True = y
 
+-- cantProblemsFromTeam :: Calcula la cantidad de problemas dado una lista de Teams
+cantProblemsFromTeam :: Teams -> Int
+cantProblemsFromTeam [] = 0
+cantProblemsFromTeam (x:xs) = (length . subs) x 
+
+
 -- replace reemplaza un valor en una lista
 replace :: a -> Int -> [a] -> [a]
 replace item pos lista = do (take pos lista) ++ (item:drop (pos+1) lista)  
