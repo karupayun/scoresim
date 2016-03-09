@@ -109,11 +109,11 @@ handleChargeWeb = do
 -- handleVelocity :: El Handler para cambiar la velocidad de la simulación.
 handleVelocity :: Handler App App ()
 handleVelocity = do
-  (view, result) <- runForm "delay" formInt
+  (view, result) <- runForm "velocity" formInt
   case result of
     Just x  -> do changeVelocity (int1 x)
                   redirect "/"
-    Nothing -> heistLocal (bindDigestiveSplices view) $ render "delay"
+    Nothing -> heistLocal (bindDigestiveSplices view) $ render "velocity"
 
 -- usuarioActivo : Función que devuelve el usuario activo, o "" si no hay ninguno
 usuarioActivo :: Handler App App String
@@ -174,7 +174,6 @@ handleUnpause = unpause >> redirect "/"
 handleScore :: Handler App App ()
 handleScore = do 
             c <- getContest
-         --   (view, result) <- runForm "score" formSubmit
             g <- liftIO $ generate c
             writeText $ T.pack $ g
 

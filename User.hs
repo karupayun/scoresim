@@ -45,6 +45,7 @@ modifTS x = modifyScore $ set ts x
 modifV :: Int -> St ()
 modifV x = modifyScore $ set v x
 
+
 -- addOfitialTeams: Dado los teams oficiales, los carga en el estado.
 addOfitialTeams :: Contest -> St ()
 addOfitialTeams (cp,ot) = do 
