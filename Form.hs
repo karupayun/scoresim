@@ -153,8 +153,8 @@ handleNewSubmit = do
   (view, result) <- runForm "new_submit" formSubmit
   us <- usuarioActivo
   case result of
-    Just x  -> addSubmit (us, (T.unpack $ text1 x), int1 x, int2 x /= 0, int3 x, int4 x)
-               redirect "/"
+    Just x  -> do addSubmit (us, (T.unpack $ text1 x), int1 x, int2 x /= 0, int3 x, int4 x)
+                  redirect "/"
     Nothing -> heistLocal (bindDigestiveSplices view) $ render "new_submit"
 
 -- handleStart :: El Handler para arrancar el simulacro.
