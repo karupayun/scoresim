@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-
 ------------------------------------------------------------------------------
 -- | This module is where all the routes and handlers are defined for your
 -- site. The 'app' function is the initializer that combines everything
@@ -11,7 +10,7 @@ module Site
 ------------------------------------------------------------------------------
 import           Control.Applicative
 import           Data.ByteString (ByteString)
-import           Data.Monoid
+import           Data.Monoid (mempty)
 import qualified Data.Text as T
 import           Snap.Core
 import           Snap.Snaplet
@@ -21,14 +20,14 @@ import           Snap.Snaplet.Heist
 import           Snap.Snaplet.Session.Backends.CookieSession
 import           Snap.Util.FileServe
 import           Heist
-import           Data.IORef 
+import           Data.IORef (newIORef)
 import qualified Heist.Interpreted as I
 ------------------------------------------------------------------------------
 import           Application
 import           Tipes
 import           Form
-import           State
-import Control.Monad.IO.Class
+import           Auxiliar (vacio)
+import           Control.Monad.IO.Class (liftIO)
 
 ------------------------------------------------------------------------------
 -- | Render login form
@@ -70,13 +69,14 @@ routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
-         , ("/new_contest", handleNewContest) -- 2 String
-         , ("/choose", handleChoose)          -- 1 String
-         , ("/new_team", with auth handleNewTeam)       -- String
---         , ("/delete_team", handleDeleteTeam)
---         , ("/teams", handleTeams)
---         , ("/new_submit", handleNewSubmit)
---         , ("/delay", handleDelay)
+         , ("/charge_file", handleChargeFile)  
+         , ("/charge_web", handleChargeWeb)  
+         , ("/choose", handleChoose)
+         , ("/velocity", handleVelocity)
+         , ("/new_team", handleNewTeam)       
+         , ("/delete_team", handleDeleteTeam)
+         , ("/teams", handleTeams)
+         , ("/new_submit", handleNewSubmit)
          , ("/start", handleStart)
          , ("/score.html", handleScore)
          , ("/pause", handlePause)
@@ -94,9 +94,6 @@ app = makeSnaplet "app" "An snaplet example application." Nothing $ do
     s <- nestSnaplet "sess" sess $
            initCookieSessionManager "site_key.txt" "sess" (Just 3600)
 
-    -- NOTE: We're using initJsonFileAuthManager here because it's easy and
-    -- doesn't require any kind of database server to run.  In practice,
-    -- you'll probably want to change this to a more robust auth backend.
     a <- nestSnaplet "auth" auth $
            initJsonFileAuthManager defAuthSettings sess "users.json"
     addRoutes routes

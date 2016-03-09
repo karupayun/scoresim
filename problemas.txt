@@ -1,7 +1,0 @@
-1) Problema de los dos tipos de Teams. Como solucionarlo.
-
-2) Problema de las mónadas, con cuál trabajar.
-
-3) Problema de como imprimir la información.
-
-4) Panorama general del trabajo.

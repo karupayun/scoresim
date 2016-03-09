@@ -7,7 +7,9 @@
 
     <p>Congrats!  You're logged in as '<loggedInUser/>'</p>
 
-    <p>Si quiere cargar un nuevo simulacro, ingrese aquí: <a href="/new_contest">New Contest</a></p>    
+    <p>Si quiere cargar un nuevo simulacro desde un archivo, ingrese aquí: <a href="/charge_file">Charge File</a></p>
+
+    <p>Si quiere cargar un nuevo simulacro desde una página, ingrese aquí: <a href="/charge_web">Charge Web</a></p>    
 
     <p>Si quiere simular un contest ya cargado, ingrese aquí: <a href="/choose">Choose Contest</a></p>    
     

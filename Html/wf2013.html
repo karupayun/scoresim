@@ -1,0 +1,2219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0037)http://static.kattis.com/icpc/wf2013/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>37th Annual World Finals of the ACM International Collegiate Programming Contest</title>
+<style type="text/css">
+/***************** statistics ********************/
+table#statisticswrapper {
+    width: 100%;
+}
+
+.statisticsheader {
+    padding-top: 10pt;
+    padding-bottom: 0pt;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+td.statistics_row0{
+  background-color:#FFFFFF;
+}
+td.statistics_row1{
+  background-color:#DDDDDD;
+}
+
+table.statisticstable {
+  width:100%;
+}
+
+.statisticstable td {
+  text-align: right;
+}
+
+table.progress_stats {
+  width:50%;
+}
+
+.progress_stats td {
+  text-align: right;
+}
+
+th.statisticsrowheader {
+  width: 75px;
+}
+
+
+/**************** body and tag styles ****************/
+
+body {
+  margin: 0;
+  background-color: #E3DCC0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+}
+		  
+h1 {
+  font-size: 1.6em;
+  margin: 15px 0;
+}
+					
+h2 {
+  font-size: 1.4em;
+  margin: 10px 0;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+a:link, a:visited, a:link:hover, a:visited:hover {
+  color:#2756CC;
+}		
+a:link, a:visited {
+  text-decoration: none;
+}
+a:link:hover, a:visited:hover {
+  text-decoration: underline;
+}
+
+td{
+  vertical-align:top;
+  border:0;
+}
+
+.error{
+	text-align:center;
+	color:#FF0000;
+	font-weight:bold;
+}
+
+.confirmation{
+	text-align:center;
+	color:#00AA00;
+	font-weight:bold;
+}
+
+hr{
+  border:1px solid #CCCCCC;
+  border-bottom:0;
+  margin:3px 0;
+}
+
+.no_border{
+  border:0px;
+}
+
+.problemheader {
+    text-align: center;
+}
+
+img#icpclogo{
+    width: 100%;
+}
+
+/**************** filter styles ****************/
+#filter{
+  padding:0;
+  margin:0;
+}
+#filter_table{
+  margin-top:25px;
+  width:100%;
+  border-collapse:collapse;
+}
+#filter_table td{
+  width:50%;
+  border:0;
+  vertical-align:bottom;
+}
+
+.status_filter td {
+    border:0;
+}
+
+/**************** container styles ****************/
+.container {
+  width: 800px;
+  background-color: white;
+  margin: 10px auto;
+  position:relative;
+  padding: 15px 25px;
+  text-align:left;
+  border:1px solid #aaa;   
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);  
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.container:before, .container:after {
+   position: absolute;  
+   width: 350px;  
+   height: 10px;  
+   content: ' ';  
+   left: 12px;  
+   bottom: 14px;  
+   background: transparent;  
+   -webkit-transform: skew(-5deg) rotate(-5deg);  
+   -moz-transform: skew(-5deg) rotate(-5deg);  
+   -ms-transform: skew(-5deg) rotate(-5deg);  
+   -o-transform: skew(-5deg) rotate(-5deg);  
+   transform: skew(-5deg) rotate(-5deg);  
+   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  
+   z-index: -1;  
+}
+.container:after {  
+   left: auto;  
+   right: 12px;  
+   -webkit-transform: skew(5deg) rotate(5deg);  
+   -moz-transform: skew(5deg) rotate(5deg);  
+   -ms-transform: skew(5deg) rotate(5deg);  
+   -o-transform: skew(5deg) rotate(5deg);  
+   transform: skew(5deg) rotate(5deg);  
+}  
+
+/**************** header styles ****************/
+#header {
+  background: #5197d7;
+  margin: 0 auto 0 auto;
+  font-family: Courier, monospace;
+  font-size: 1em;
+  line-height: 1.8em;
+  -moz-box-shadow: 0 5px 30px #aaa;
+  -webkit-box-shadow: 0 5px 30px #aaa;
+  box-shadow: 0 5px 30px #aaa;
+}
+#header .right {
+  float: right;
+}
+#header .row {
+  margin: 0 auto;
+  width: 860px;
+  overflow: auto;
+}
+#main_menu form {
+  display: inline-block;
+  padding-right: 5px;
+}
+#banner {
+  text-align:center;
+  background: red;
+  color: white;
+  font-weight:bold;
+}
+#main_menu {
+  background: #5197D7;
+  color: white;
+}
+#sub_menu {
+  background: #ffc;
+  color: black;
+  clear: right;
+}
+#header a{
+  font-weight:bold;
+  letter-spacing: 1px;
+  padding: 0 5px;
+}
+#header a:hover{ font-weight:bold; }
+#main_menu a { color:white; }
+#sub_menu a { color:black; }
+
+/**************** profile styles ****************/
+.info_field_right{
+  float:right;
+  margin-top:15px;
+  margin-bottom:15px;
+  margin-right:5px;
+}
+.info_field_left{
+  float:left;
+  margin-bottom:15px;
+  clear:both;
+}
+#authinfo, #stats{
+  border-collapse:collapse;
+  margin-right:15px;
+  margin-bottom:15px;
+}
+#authinfo th, td, #stats th, td{
+  padding-left:5px;
+  padding-right:5px;
+  border:1px solid #CCCCCC;
+}
+table.info{
+  border-collapse:collapse;
+}
+#update_info table{
+  border-collapse:collapse;
+}
+#update_info td{
+  border:0;
+}
+#update_info form{
+  border:2px;
+}
+
+#password_reset table{
+  border-collapse:collapse;
+}
+#password_reset td{
+  border:0;
+}
+#password_reset form{
+  border:2px;
+}
+
+/**************** source styles ****************/
+#source_frame{
+  width:500px;
+  height:400px;
+  border:1px solid #000000;
+}	
+#course_info{
+  border-top:1px solid #CCCCCC;
+}
+
+.rejudge_summary td {
+	width: 50px;
+	text-align: right;
+}
+
+.rejudge_summary td.no_change {
+  background: #DDFFDD;
+}
+
+.rejudge_summary td.change {
+  background: #FFDDDD;
+}
+
+.rejudge_summary td.no_change_filtered_out {
+	background: #F0FFF0;
+	color: #AAAAAA;
+}
+
+.rejudge_summary td.change_filtered_out {
+	background: #FFF0F0;
+	color: #AAAAAA;
+}
+
+.submission_list, #solved, #judge_table, #problem_list, #search_list, #standings, #students, #teachers, #teams, #submissions{
+  border-collapse:collapse;
+  margin-top:15px;
+  width:100%;
+}  
+
+.submission_list th, #solved th, #judge_table th, #problem_list th,  #search_list th, #standings th, #students th, #teachers th, #teams th, #submissions th{
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:0px;
+  border-bottom:2px solid #AAAAAA;
+  border-top:2px solid #AAAAAA;
+  border-right:1px solid #CCCCCC;
+  border-left:1px solid #CCCCCC;
+}  
+.submission_list td, #solved td, #judge_table td, #problem_list td,  #search_list td, #standings td, #students td, #teachers td, #teams td, #submissions td{
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:0px;
+  border:1px solid #CCCCCC;
+} 
+.accepted{
+  color:#00AA33;
+  margin:0;
+  padding:0;
+}
+.rejected{
+  color:#FF0000;
+  margin:0;
+  padding:0;
+}
+.status {
+  text-align:center;
+}
+.runtime {
+  text-align:right;
+}
+.unjudged{
+  margin:0;
+  padding:0;
+}
+td.solved{
+  background-color:#99FF99;
+}
+td.attempted{
+  background-color:#FF9999;
+}
+td.partial{
+  background-color:#FFFF99;
+}
+/**************** judge submit ****************/
+#submit_table table{
+  border-top:1px solid #CCCCCC;
+}
+#submit_table td{
+  padding-top:15px;
+  border:0px;
+}
+/**************** judge styles ****************/
+table.prev_next{
+  width:100%; 
+  border-collapse:collapse; 
+  margin:0;
+}
+td.prev_next_l{
+  width:25%; 
+  text-align:left; 
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+td.prev_next_c{
+  width:50%; 
+  text-align:center;
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+td.prev_next_r{
+  width:25%; 
+  text-align:right; 
+  vertical-align:middle;
+  border:0px; 
+  padding-top:5px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+
+/**************** footer styles ****************/
+#footer {
+  margin:auto;
+  padding-bottom: 5px;
+  width: 850px;
+  text-shadow: 0px 2px 3px white;
+}		  
+
+#footer_left, #footer_right {
+  display: inline-block;
+}
+#footer_right {
+  float: right;
+}
+
+/************* submission styles *********/
+div.privilegedinfobox {
+	border:3px solid #AA6666; 
+	padding:4px;
+	margin-top: 10px;
+}
+div.infobox {
+	border:3px solid #6666AA; 
+	padding:4px;
+	margin-top: 10px;
+}
+
+#extrainfo p { 
+	border:1px solid #CCCCCC; 
+	padding:5px;
+}
+.infofile p { 
+	border:1px solid #CCCCCC; 
+	padding:5px;
+}
+
+#mailtable th {
+    border: 0;
+}
+#mailtable td{
+    border: 0;
+}
+
+/*************** clar stuff ***************/
+
+table.clar_header {
+    width : 100%;
+    padding: 0px;
+    margin: 0px;
+    border-spacing: 0px;
+}
+.clar_header th {
+    padding-left : 0px;
+    margin-left: 0px;
+    vertical-align:middle;
+    text-align:left;
+}
+
+.clar_header td {
+    border: 0px;
+    padding-right : 0px;
+    margin-right: 0px;
+    vertical-align:middle;
+    text-align:right;
+}
+/*
+form.queueform{
+    float:right;
+    display:inline;
+}
+*/
+.clar_reply {
+    background-color: #e0e0e0; 
+    padding: 1em;
+}
+
+#clarbox {
+width: 100%;
+text-align:center;
+height:4ex;
+}
+
+#newclar {
+  text-align:center;
+  margin: 0 auto;
+  padding:3px;
+  color:red;
+  border: solid black 2px;
+  font-weight:bold;
+}
+
+div.newanswer {
+  padding:2px;
+  border: solid black 1px;
+}
+
+
+/************* print styles **************/
+@media print {
+
+  a { text-decoration:none; }
+ 
+  #header { display:none; }
+
+  body { background-color: white;}
+
+  #teachernav, #adminnav, #studentnav { display:none; }
+  
+  .problemheader a { display:none; }
+
+  .container {
+    width: 100%;
+    height:100%;
+    color: black;
+    border:none;
+    padding: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .container:before, .container:after { display: none; }
+}
+
+/**************** login styles ****************/
+
+
+div#login_error{
+    margin: 1em;
+    text-align: center; 
+}
+#login_error span{
+    padding: 5px;
+    border: solid grey 1px;
+}
+
+#login_pw_no_cas {
+    padding: 1em;
+    width: 100%;
+    display: inline-block;
+    text-align: center; 
+}
+
+#login_pw {
+    padding: 1em;
+    position: relative;
+    width: 45%;
+    display: inline-block;
+    float:right;
+    border-left: 1px solid;
+    text-align: center;
+}
+
+#login_cas {
+    padding: 1em;
+    position: relative;
+    width: 45%;
+    display: inline-block;
+    float:left;
+    text-align: center;
+}
+
+
+/**************** testcase styles ****************/
+
+.testcases {
+	height: 10px;
+}
+
+.testcases span {
+	float: left; 
+	width: 10px;
+    border: 1px solid #000000;
+	background-color:#EEEEEE;
+	margin-right: 2px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	font-size: 0.8em;
+}
+
+.testcases span.accepted {
+  background-color:#33DD55;
+  color: #000000;
+}
+
+.testcases span.rejected {
+  background-color:#FF4444;
+  color: #000000;
+}
+
+.testcases span.running {
+  background-color:#FFFF66;
+  color: #000000;
+}
+
+/********* session admin **********/
+#problem_selection .dndhandle {
+  cursor: pointer;
+}
+.container {
+  width: auto;
+  min-width: 800px;
+  margin: 10px;
+}
+table#tablelegend {
+  margin-top: 15px;
+}
+td.solved{
+  background-color:#99FF99;
+}
+td.solvedfirst{
+  background-color:#008800;
+  font-weight: bold;
+  color: white;
+}
+td.attempted{
+  background-color:#FF9999;
+}
+td.pending{
+  background-color:#9999FF;
+}
+td.group_leader { background-color: #FFFFAA; }
+
+tr.highlight {
+	background-color: #EEEEFF;
+	font-weight: bold;
+}img.title {margin: 5px 0px 10px 0px; }
+</style>
+
+<!--HEADHOOK-->
+
+<link rel="Shortcut Icon" href="http://static.kattis.com/icpc/wf2013/images/icon-icpc-small.gif"><script type="text/javascript" async="" src="./test2013_files/ga.js"></script><script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-26661929-7']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script> </head>
+
+<body>
+
+
+<div class="container">
+
+<center><img src="./test2013_files/2013-logo.png" alt="ICPC Logo"></center><h1>Final standings in 37th Annual World Finals of the ACM International Collegiate Programming Contest</h1><br><table>
+<tbody><tr></tr></tbody></table>
+<p>Mirrors: <a href="http://icpc.baylor.edu/scoreboard">Baylor</a>, <a href="./test2013_files/test2013.html">Kattis</a>. An <a href="https://icpc.kattis.com/problems">online judge</a> with the problemset is available. (The problems are published after contest start)</p><table id="tablelegend"><tbody><tr><td class="group_leader">Super region leader</td><td class="solvedfirst">First to solve problem</td><td class="solved">Solved problem</td><td class="attempted">Attempted problem</td><td class="pending">Pending judgement</td></tr></tbody></table>
+<table id="standings">
+<tbody><tr><th>Rk</th><th colspan="3">Team</th><th>Slv.</th><th>Time</th><th class="problemcolheader">A</th>
+<th class="problemcolheader">B</th>
+<th class="problemcolheader">C</th>
+<th class="problemcolheader">D</th>
+<th class="problemcolheader">E</th>
+<th class="problemcolheader">F</th>
+<th class="problemcolheader">G</th>
+<th class="problemcolheader">H</th>
+<th class="problemcolheader">I</th>
+<th class="problemcolheader">J</th>
+<th class="problemcolheader">K</th>
+</tr>
+<tr><td>1</td><td title="Super region leader, Europe" class="group_leader">St. Petersburg National Research University of IT, Mechanics and Optics</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="St. Petersburg National Research University of IT, Mechanics and Optics" src="./test2013_files/0062.png"></td><td>10</td>
+<td>1176</td><td class="solved">1<br><small>43</small></td>
+<td class="solved">1<br><small>285</small></td>
+<td class="solved">1<br><small>77</small></td>
+<td class="solvedfirst" title="First team to solve this problem">2<br><small>17</small></td>
+<td class="solvedfirst" title="First team to solve this problem">1<br><small>131</small></td>
+<td class="solved">2<br><small>27</small></td>
+<td class="attempted">15<br>--</td>
+<td class="solved">1<br><small>57</small></td>
+<td class="solvedfirst" title="First team to solve this problem">1<br><small>157</small></td>
+<td class="solved">1<br><small>115</small></td>
+<td class="solved">2<br><small>207</small></td>
+</tr>
+<tr><td>2</td><td title="Super region leader, Asia" class="group_leader">Shanghai Jiao Tong University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Shanghai Jiao Tong University" src="./test2013_files/0057.png"></td><td>9</td>
+<td>1209</td><td class="solved">1<br><small>85</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">3<br><small>92</small></td>
+<td class="solved">1<br><small>45</small></td>
+<td class="solved">2<br><small>255</small></td>
+<td class="solved">3<br><small>46</small></td>
+<td></td>
+<td class="solved">1<br><small>113</small></td>
+<td class="solved">1<br><small>207</small></td>
+<td class="solved">1<br><small>56</small></td>
+<td class="solvedfirst" title="First team to solve this problem">2<br><small>190</small></td>
+</tr>
+<tr><td>3</td><td title="Asia">The University of Tokyo</td><td class="flag"><img class="flag" alt="JPN" src="./test2013_files/JPN.png"></td><td class="school"><img class="school" alt="The University of Tokyo" src="./test2013_files/0069.png"></td><td>8</td>
+<td>1060</td><td class="solved">1<br><small>78</small></td>
+<td class="solvedfirst" title="First team to solve this problem">3<br><small>191</small></td>
+<td class="solved">2<br><small>165</small></td>
+<td class="solved">1<br><small>27</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>21</small></td>
+<td class="attempted">5<br>--</td>
+<td class="solved">3<br><small>140</small></td>
+<td class="solved">1<br><small>227</small></td>
+<td class="solved">1<br><small>91</small></td>
+<td class="attempted">3<br>--</td>
+</tr>
+<tr><td>4</td><td title="Asia">National Taiwan University</td><td class="flag"><img class="flag" alt="TWN" src="./test2013_files/TWN.png"></td><td class="school"><img class="school" alt="National Taiwan University" src="./test2013_files/0044.png"></td><td>8</td>
+<td>1060</td><td class="solved">3<br><small>81</small></td>
+<td></td>
+<td class="solved">1<br><small>45</small></td>
+<td class="solved">1<br><small>53</small></td>
+<td class="solved">6<br><small>274</small></td>
+<td class="solvedfirst" title="First team to solve this problem">1<br><small>10</small></td>
+<td class="attempted">6<br>--</td>
+<td class="solved">2<br><small>103</small></td>
+<td class="solved">3<br><small>183</small></td>
+<td class="solved">2<br><small>91</small></td>
+<td></td>
+</tr>
+<tr><td>5</td><td title="Europe">St. Petersburg State University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="St. Petersburg State University" src="./test2013_files/0061.png"></td><td>8</td>
+<td>1156</td><td class="solved">1<br><small>90</small></td>
+<td></td>
+<td class="solved">2<br><small>116</small></td>
+<td class="solved">2<br><small>61</small></td>
+<td></td>
+<td class="solved">1<br><small>17</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>193</small></td>
+<td class="solved">1<br><small>263</small></td>
+<td class="solved">2<br><small>109</small></td>
+<td class="solved">1<br><small>227</small></td>
+</tr>
+<tr><td>6</td><td title="Europe">University of Warsaw</td><td class="flag"><img class="flag" alt="POL" src="./test2013_files/POL.png"></td><td class="school"><img class="school" alt="University of Warsaw" src="./test2013_files/0113.png"></td><td>8</td>
+<td>1189</td><td class="solved">1<br><small>152</small></td>
+<td></td>
+<td class="solvedfirst" title="First team to solve this problem">1<br><small>37</small></td>
+<td class="solved">3<br><small>102</small></td>
+<td class="solved">2<br><small>224</small></td>
+<td class="solved">1<br><small>15</small></td>
+<td class="attempted">3<br>--</td>
+<td class="solved">1<br><small>135</small></td>
+<td class="solved">3<br><small>242</small></td>
+<td class="solved">2<br><small>162</small></td>
+<td></td>
+</tr>
+<tr><td>7</td><td title="Europe">Taras Shevchenko Kiev National University</td><td class="flag"><img class="flag" alt="UKR" src="./test2013_files/UKR.png"></td><td class="school"><img class="school" alt="Taras Shevchenko Kiev National University" src="./test2013_files/0065.png"></td><td>8</td>
+<td>1317</td><td class="solved">2<br><small>169</small></td>
+<td></td>
+<td class="solved">2<br><small>146</small></td>
+<td class="solved">1<br><small>107</small></td>
+<td class="solved">1<br><small>262</small></td>
+<td class="solved">1<br><small>39</small></td>
+<td></td>
+<td class="solved">3<br><small>71</small></td>
+<td class="solved">4<br><small>226</small></td>
+<td class="solved">3<br><small>117</small></td>
+<td></td>
+</tr>
+<tr><td>8</td><td title="Europe">Belarusian State University</td><td class="flag"><img class="flag" alt="BLR" src="./test2013_files/BLR.png"></td><td class="school"><img class="school" alt="Belarusian State University" src="./test2013_files/0009.png"></td><td>7</td>
+<td>966</td><td class="solved">2<br><small>108</small></td>
+<td></td>
+<td class="solved">2<br><small>197</small></td>
+<td class="solved">1<br><small>48</small></td>
+<td></td>
+<td class="solved">1<br><small>17</small></td>
+<td></td>
+<td class="solved">1<br><small>149</small></td>
+<td class="solved">1<br><small>249</small></td>
+<td class="solved">1<br><small>158</small></td>
+<td></td>
+</tr>
+<tr><td>9</td><td title="Europe">Jagiellonian University in Krakow</td><td class="flag"><img class="flag" alt="POL" src="./test2013_files/POL.png"></td><td class="school"><img class="school" alt="Jagiellonian University in Krakow" src="./test2013_files/0032.png"></td><td>7</td>
+<td>1301</td><td class="solved">1<br><small>88</small></td>
+<td></td>
+<td class="solved">1<br><small>225</small></td>
+<td class="solved">2<br><small>179</small></td>
+<td></td>
+<td class="solved">3<br><small>96</small></td>
+<td></td>
+<td class="solved">1<br><small>131</small></td>
+<td class="solved">1<br><small>265</small></td>
+<td class="solved">1<br><small>257</small></td>
+<td></td>
+</tr>
+<tr><td>10</td><td title="Europe">Moscow State University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Moscow State University" src="./test2013_files/0042.png"></td><td>6</td>
+<td>626</td><td class="solved">1<br><small>115</small></td>
+<td></td>
+<td class="solved">2<br><small>117</small></td>
+<td class="solved">2<br><small>56</small></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">2<br><small>16</small></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">3<br><small>72</small></td>
+<td></td>
+<td class="solved">1<br><small>150</small></td>
+<td></td>
+</tr>
+<tr><td>11</td><td title="Super region leader, North America" class="group_leader">Carnegie Mellon University</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="Carnegie Mellon University" src="./test2013_files/0012.png"></td><td>6</td>
+<td>755</td><td class="solved">1<br><small>102</small></td>
+<td></td>
+<td class="solved">2<br><small>71</small></td>
+<td class="solved">1<br><small>220</small></td>
+<td class="attempted">11<br>--</td>
+<td class="solved">1<br><small>39</small></td>
+<td></td>
+<td class="solved">1<br><small>159</small></td>
+<td></td>
+<td class="solved">1<br><small>144</small></td>
+<td></td>
+</tr>
+<tr><td>12</td><td title="Asia">Tsinghua University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Tsinghua University" src="./test2013_files/0073.png"></td><td>6</td>
+<td>877</td><td class="solved">2<br><small>40</small></td>
+<td></td>
+<td class="solved">2<br><small>218</small></td>
+<td class="solved">5<br><small>182</small></td>
+<td></td>
+<td class="solved">1<br><small>38</small></td>
+<td></td>
+<td class="solved">1<br><small>165</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>114</small></td>
+<td></td>
+</tr>
+<tr><td>13</td><td title="Europe">Perm State University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Perm State University" src="./test2013_files/0050.png"></td><td>6</td>
+<td>882</td><td class="solved">1<br><small>67</small></td>
+<td></td>
+<td class="solved">1<br><small>152</small></td>
+<td class="solved">1<br><small>230</small></td>
+<td></td>
+<td class="solved">1<br><small>26</small></td>
+<td></td>
+<td class="solved">3<br><small>234</small></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">1<br><small>133</small></td>
+<td></td>
+</tr>
+<tr><td>14</td><td title="Europe">Altai State Technical University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Altai State Technical University" src="./test2013_files/0002.png"></td><td>6</td>
+<td>922</td><td class="solved">1<br><small>144</small></td>
+<td></td>
+<td class="solved">2<br><small>102</small></td>
+<td class="solved">2<br><small>118</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>36</small></td>
+<td></td>
+<td class="solved">1<br><small>156</small></td>
+<td></td>
+<td class="solved">4<br><small>266</small></td>
+<td></td>
+</tr>
+<tr><td>15</td><td title="Europe">Ufa State Aviation Technical University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Ufa State Aviation Technical University" src="./test2013_files/0074.png"></td><td>6</td>
+<td>944</td><td class="solved">1<br><small>156</small></td>
+<td></td>
+<td class="solved">3<br><small>239</small></td>
+<td class="solved">1<br><small>102</small></td>
+<td></td>
+<td class="solved">1<br><small>60</small></td>
+<td></td>
+<td class="solved">1<br><small>237</small></td>
+<td></td>
+<td class="solved">2<br><small>90</small></td>
+<td></td>
+</tr>
+<tr><td>16</td><td title="Europe">Ural Federal University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Ural Federal University" src="./test2013_files/0117.png"></td><td>6</td>
+<td>969</td><td class="solved">2<br><small>79</small></td>
+<td></td>
+<td class="solved">2<br><small>212</small></td>
+<td class="solved">2<br><small>250</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">3<br><small>66</small></td>
+<td></td>
+<td class="solved">3<br><small>123</small></td>
+<td></td>
+<td class="solved">1<br><small>99</small></td>
+<td></td>
+</tr>
+<tr><td>17</td><td title="Asia">Northeast Normal University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Northeast Normal University" src="./test2013_files/0047.png"></td><td>6</td>
+<td>981</td><td class="solved">1<br><small>188</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>210</small></td>
+<td class="solved">4<br><small>114</small></td>
+<td></td>
+<td class="solved">1<br><small>46</small></td>
+<td></td>
+<td class="solved">2<br><small>170</small></td>
+<td></td>
+<td class="solved">1<br><small>173</small></td>
+<td></td>
+</tr>
+<tr><td>18</td><td title="North America">Massachusetts Institute of Technology</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="Massachusetts Institute of Technology" src="./test2013_files/0038.png"></td><td>6</td>
+<td>982</td><td class="solved">1<br><small>215</small></td>
+<td class="attempted">7<br>--</td>
+<td class="solved">1<br><small>212</small></td>
+<td class="solved">2<br><small>67</small></td>
+<td></td>
+<td class="solved">2<br><small>35</small></td>
+<td></td>
+<td class="solved">1<br><small>137</small></td>
+<td></td>
+<td class="solved">1<br><small>276</small></td>
+<td></td>
+</tr>
+<tr><td>19</td><td title="Asia">Peking University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Peking University" src="./test2013_files/0049.png"></td><td>6</td>
+<td>1101</td><td class="solved">2<br><small>188</small></td>
+<td></td>
+<td class="solved">2<br><small>94</small></td>
+<td class="solved">1<br><small>158</small></td>
+<td></td>
+<td class="solved">3<br><small>38</small></td>
+<td></td>
+<td class="solved">1<br><small>204</small></td>
+<td></td>
+<td class="solved">4<br><small>279</small></td>
+<td></td>
+</tr>
+<tr><td>20</td><td title="Asia">The Chinese University of Hong Kong</td><td class="flag"><img class="flag" alt="HKG" src="./test2013_files/HKG.png"></td><td class="school"><img class="school" alt="The Chinese University of Hong Kong" src="./test2013_files/0067.png"></td><td>6</td>
+<td>1108</td><td class="solved">1<br><small>271</small></td>
+<td></td>
+<td class="solved">2<br><small>97</small></td>
+<td class="solved">6<br><small>233</small></td>
+<td></td>
+<td class="solved">3<br><small>58</small></td>
+<td></td>
+<td class="solved">3<br><small>179</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">1<br><small>70</small></td>
+<td></td>
+</tr>
+<tr><td>21</td><td title="North America">University of Southern California</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Southern California" src="./test2013_files/0108.png"></td><td>6</td>
+<td>1129</td><td class="solved">1<br><small>102</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>292</small></td>
+<td class="solved">1<br><small>147</small></td>
+<td></td>
+<td class="solved">1<br><small>28</small></td>
+<td></td>
+<td class="solved">2<br><small>268</small></td>
+<td></td>
+<td class="solved">4<br><small>192</small></td>
+<td></td>
+</tr>
+<tr><td>22</td><td title="Asia">South China University of Technology</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="South China University of Technology" src="./test2013_files/0059.png"></td><td>6</td>
+<td>1147</td><td class="solved">2<br><small>99</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>269</small></td>
+<td class="solved">3<br><small>296</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">1<br><small>15</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">3<br><small>286</small></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">1<br><small>62</small></td>
+<td class="attempted">1<br>--</td>
+</tr>
+<tr><td>23</td><td title="Asia">Institut Teknologi Bandung</td><td class="flag"><img class="flag" alt="IDN" src="./test2013_files/IDN.png"></td><td class="school"><img class="school" alt="Institut Teknologi Bandung" src="./test2013_files/0027.png"></td><td>6</td>
+<td>1193</td><td class="solved">2<br><small>263</small></td>
+<td></td>
+<td class="solved">3<br><small>293</small></td>
+<td class="solved">2<br><small>36</small></td>
+<td class="attempted">10<br>--</td>
+<td class="solved">2<br><small>48</small></td>
+<td></td>
+<td class="solved">1<br><small>199</small></td>
+<td class="solved">3<br><small>214</small></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>24</td><td title="Europe">Novosibirsk State University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Novosibirsk State University" src="./test2013_files/0048.png"></td><td>6</td>
+<td>1230</td><td class="solved">2<br><small>91</small></td>
+<td></td>
+<td class="solved">4<br><small>289</small></td>
+<td class="solved">1<br><small>154</small></td>
+<td></td>
+<td class="solved">2<br><small>45</small></td>
+<td></td>
+<td class="solved">2<br><small>219</small></td>
+<td></td>
+<td class="solved">3<br><small>272</small></td>
+<td></td>
+</tr>
+<tr><td>25</td><td title="Asia">The University of Electro-Communications</td><td class="flag"><img class="flag" alt="JPN" src="./test2013_files/JPN.png"></td><td class="school"><img class="school" alt="The University of Electro-Communications" src="./test2013_files/0068.png"></td><td>6</td>
+<td>1281</td><td class="solved">1<br><small>158</small></td>
+<td></td>
+<td class="solved">3<br><small>124</small></td>
+<td class="solved">5<br><small>230</small></td>
+<td></td>
+<td class="solved">1<br><small>57</small></td>
+<td></td>
+<td class="solved">1<br><small>188</small></td>
+<td></td>
+<td class="solved">7<br><small>284</small></td>
+<td></td>
+</tr>
+<tr><td>26</td><td title="North America">Stanford University</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="Stanford University" src="./test2013_files/0063.png"></td><td>6</td>
+<td>1405</td><td class="solved">6<br><small>143</small></td>
+<td class="attempted">3<br>--</td>
+<td class="solved">1<br><small>61</small></td>
+<td class="solved">8<br><small>177</small></td>
+<td></td>
+<td class="solved">4<br><small>48</small></td>
+<td></td>
+<td class="solved">3<br><small>279</small></td>
+<td></td>
+<td class="solved">6<br><small>257</small></td>
+<td></td>
+</tr>
+<tr><td>27</td><td title="Europe">Saratov State University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Saratov State University" src="./test2013_files/0055.png"></td><td>5</td>
+<td>633</td><td class="solved">1<br><small>238</small></td>
+<td></td>
+<td class="solved">1<br><small>170</small></td>
+<td class="attempted">14<br>--</td>
+<td></td>
+<td class="solved">1<br><small>23</small></td>
+<td></td>
+<td class="solved">1<br><small>131</small></td>
+<td></td>
+<td class="solved">1<br><small>71</small></td>
+<td></td>
+</tr>
+<tr><td>28</td><td title="Asia">Zhongshan (Sun Yat-sen) University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Zhongshan (Sun Yat-sen) University" src="./test2013_files/0120.png"></td><td>5</td>
+<td>655</td><td class="solved">5<br><small>104</small></td>
+<td></td>
+<td class="solved">1<br><small>172</small></td>
+<td class="solved">3<br><small>133</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">2<br><small>35</small></td>
+<td></td>
+<td class="solved">1<br><small>71</small></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+</tr>
+<tr><td>29</td><td title="Asia">Beihang University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Beihang University" src="./test2013_files/0006.png"></td><td>5</td>
+<td>693</td><td class="solved">1<br><small>148</small></td>
+<td class="attempted">5<br>--</td>
+<td class="solved">2<br><small>259</small></td>
+<td class="solved">1<br><small>62</small></td>
+<td></td>
+<td class="solved">2<br><small>30</small></td>
+<td></td>
+<td class="solved">1<br><small>154</small></td>
+<td></td>
+<td class="attempted">7<br>--</td>
+<td></td>
+</tr>
+<tr><td>30</td><td title="Asia">Sharif University of Technology</td><td class="flag"><img class="flag" alt="IRN" src="./test2013_files/IRN.png"></td><td class="school"><img class="school" alt="Sharif University of Technology" src="./test2013_files/0058.png"></td><td>5</td>
+<td>730</td><td class="solved">1<br><small>227</small></td>
+<td></td>
+<td class="solved">3<br><small>157</small></td>
+<td class="solved">1<br><small>92</small></td>
+<td></td>
+<td class="solved">1<br><small>33</small></td>
+<td></td>
+<td class="solved">1<br><small>181</small></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+</tr>
+<tr><td>31</td><td title="Europe">ETH Zürich</td><td class="flag"><img class="flag" alt="CHE" src="./test2013_files/CHE.png"></td><td class="school"><img class="school" alt="ETH Zürich" src="./test2013_files/0018.png"></td><td>5</td>
+<td>733</td><td class="solved">1<br><small>103</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>264</small></td>
+<td class="attempted">7<br>--</td>
+<td></td>
+<td class="solved">1<br><small>33</small></td>
+<td></td>
+<td class="solved">1<br><small>220</small></td>
+<td></td>
+<td class="solved">2<br><small>93</small></td>
+<td></td>
+</tr>
+<tr><td>32</td><td title="Europe">Ludwig-Maximilians Universität München</td><td class="flag"><img class="flag" alt="DEU" src="./test2013_files/DEU.png"></td><td class="school"><img class="school" alt="Ludwig-Maximilians Universität München" src="./test2013_files/0037.png"></td><td>5</td>
+<td>770</td><td class="solvedfirst" title="First team to solve this problem">1<br><small>25</small></td>
+<td></td>
+<td class="solved">1<br><small>127</small></td>
+<td class="solved">2<br><small>97</small></td>
+<td></td>
+<td class="solved">5<br><small>178</small></td>
+<td></td>
+<td class="solved">1<br><small>243</small></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+</tr>
+<tr><td>33</td><td title="Asia">Beijing Institute of Technology</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Beijing Institute of Technology" src="./test2013_files/0007.png"></td><td>5</td>
+<td>774</td><td class="solved">1<br><small>163</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">2<br><small>131</small></td>
+<td></td>
+<td class="solved">3<br><small>73</small></td>
+<td></td>
+<td class="solved">1<br><small>149</small></td>
+<td></td>
+<td class="solved">1<br><small>198</small></td>
+<td></td>
+</tr>
+<tr><td>34</td><td title="Europe">University of Wroclaw</td><td class="flag"><img class="flag" alt="POL" src="./test2013_files/POL.png"></td><td class="school"><img class="school" alt="University of Wroclaw" src="./test2013_files/0116.png"></td><td>5</td>
+<td>803</td><td class="solved">3<br><small>128</small></td>
+<td></td>
+<td class="solved">3<br><small>213</small></td>
+<td class="solved">1<br><small>41</small></td>
+<td></td>
+<td class="solved">1<br><small>27</small></td>
+<td></td>
+<td class="solved">4<br><small>254</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+</tr>
+<tr><td>35</td><td title="Europe">Samara State Aerospace University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Samara State Aerospace University" src="./test2013_files/0054.png"></td><td>5</td>
+<td>829</td><td class="solved">2<br><small>145</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">3<br><small>263</small></td>
+<td class="solved">1<br><small>114</small></td>
+<td></td>
+<td class="solved">1<br><small>47</small></td>
+<td></td>
+<td class="solved">1<br><small>200</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>36</td><td title="Asia">Fudan University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Fudan University" src="./test2013_files/0019.png"></td><td>5</td>
+<td>862</td><td class="solved">2<br><small>69</small></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td class="solved">6<br><small>269</small></td>
+<td></td>
+<td class="solved">2<br><small>43</small></td>
+<td></td>
+<td class="solved">3<br><small>215</small></td>
+<td></td>
+<td class="solved">1<br><small>86</small></td>
+<td></td>
+</tr>
+<tr><td>37</td><td title="Europe">V.N. Karazin Kharkiv National University</td><td class="flag"><img class="flag" alt="UKR" src="./test2013_files/UKR.png"></td><td class="school"><img class="school" alt="V.N. Karazin Kharkiv National University" src="./test2013_files/0118.png"></td><td>5</td>
+<td>881</td><td class="solved">1<br><small>82</small></td>
+<td></td>
+<td class="solved">3<br><small>249</small></td>
+<td class="solved">2<br><small>232</small></td>
+<td></td>
+<td class="solved">2<br><small>34</small></td>
+<td></td>
+<td class="solved">3<br><small>164</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+</tr>
+<tr><td>38</td><td title="Europe">Comenius University</td><td class="flag"><img class="flag" alt="SVK" src="./test2013_files/SVK.png"></td><td class="school"><img class="school" alt="Comenius University" src="./test2013_files/0015.png"></td><td>5</td>
+<td>885</td><td class="solved">2<br><small>90</small></td>
+<td></td>
+<td class="solved">1<br><small>101</small></td>
+<td class="solved">2<br><small>252</small></td>
+<td></td>
+<td class="solved">2<br><small>123</small></td>
+<td></td>
+<td class="solved">5<br><small>179</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>39</td><td title="North America">University of Maryland</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Maryland" src="./test2013_files/0105.png"></td><td>5</td>
+<td>946</td><td class="solved">2<br><small>133</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">7<br><small>286</small></td>
+<td></td>
+<td class="solved">3<br><small>73</small></td>
+<td></td>
+<td class="solved">1<br><small>247</small></td>
+<td></td>
+<td class="solvedfirst" title="First team to solve this problem">1<br><small>27</small></td>
+<td></td>
+</tr>
+<tr><td>40</td><td title="Europe">Moscow Institute of Physics &amp; Technology</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Moscow Institute of Physics &amp; Technology" src="./test2013_files/0040.png"></td><td>5</td>
+<td>956</td><td class="solved">3<br><small>197</small></td>
+<td></td>
+<td class="solved">2<br><small>96</small></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+<td class="solved">1<br><small>38</small></td>
+<td></td>
+<td class="solved">3<br><small>269</small></td>
+<td></td>
+<td class="solved">3<br><small>216</small></td>
+<td></td>
+</tr>
+<tr><td>41</td><td title="Asia">Ningbo Institute of Technology, ZJU</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Ningbo Institute of Technology, ZJU" src="./test2013_files/0046.png"></td><td>5</td>
+<td>975</td><td class="solved">4<br><small>284</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>107</small></td>
+<td></td>
+<td class="solved">2<br><small>61</small></td>
+<td></td>
+<td class="solved">2<br><small>261</small></td>
+<td></td>
+<td class="solved">3<br><small>122</small></td>
+<td></td>
+</tr>
+<tr><td>42</td><td title="Super region leader, Latin America" class="group_leader">Instituto Tecnológico de Aeronautica</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Instituto Tecnológico de Aeronautica" src="./test2013_files/0028.png"></td><td>5</td>
+<td>1013</td><td class="solved">1<br><small>128</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">3<br><small>98</small></td>
+<td></td>
+<td class="solved">2<br><small>31</small></td>
+<td></td>
+<td class="solved">3<br><small>288</small></td>
+<td></td>
+<td class="solved">6<br><small>268</small></td>
+<td></td>
+</tr>
+<tr><td>43</td><td title="Latin America">Universidade Federal de Pernambuco</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Universidade Federal de Pernambuco" src="./test2013_files/0088.png"></td><td>5</td>
+<td>1043</td><td class="solved">3<br><small>236</small></td>
+<td></td>
+<td class="solved">2<br><small>226</small></td>
+<td class="solved">1<br><small>100</small></td>
+<td></td>
+<td class="solved">2<br><small>43</small></td>
+<td></td>
+<td class="solved">4<br><small>298</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>44</td><td title="Europe">Universitat Politècnica de Catalunya</td><td class="flag"><img class="flag" alt="ESP" src="./test2013_files/ESP.png"></td><td class="school"><img class="school" alt="Universitat Politècnica de Catalunya" src="./test2013_files/0089.png"></td><td>5</td>
+<td>1081</td><td class="solved">6<br><small>187</small></td>
+<td></td>
+<td class="solved">2<br><small>286</small></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">1<br><small>38</small></td>
+<td></td>
+<td class="solved">3<br><small>281</small></td>
+<td></td>
+<td class="solved">1<br><small>129</small></td>
+<td></td>
+</tr>
+<tr><td>45</td><td title="North America">Columbia University</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="Columbia University" src="./test2013_files/0014.png"></td><td>5</td>
+<td>1131</td><td class="solved">1<br><small>197</small></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>254</small></td>
+<td></td>
+<td class="solved">1<br><small>86</small></td>
+<td></td>
+<td class="solved">1<br><small>223</small></td>
+<td></td>
+<td class="solved">6<br><small>251</small></td>
+<td></td>
+</tr>
+<tr><td>46</td><td title="North America">University of Toronto</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of Toronto" src="./test2013_files/0111.png"></td><td>5</td>
+<td>1221</td><td class="solved">2<br><small>171</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td class="attempted">12<br>--</td>
+<td></td>
+<td class="solved">1<br><small>26</small></td>
+<td></td>
+<td class="solved">3<br><small>155</small></td>
+<td class="solved">6<br><small>271</small></td>
+<td class="solved">8<br><small>298</small></td>
+<td></td>
+</tr>
+<tr><td>47</td><td title="Europe">Moscow Aviation Institute</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Moscow Aviation Institute" src="./test2013_files/0039.png"></td><td>5</td>
+<td>1284</td><td class="solved">3<br><small>295</small></td>
+<td></td>
+<td class="solved">10<br><small>259</small></td>
+<td class="solved">4<br><small>173</small></td>
+<td></td>
+<td class="solved">3<br><small>92</small></td>
+<td></td>
+<td class="solved">4<br><small>85</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>48</td><td title="Europe">University of Bucharest</td><td class="flag"><img class="flag" alt="ROU" src="./test2013_files/ROU.png"></td><td class="school"><img class="school" alt="University of Bucharest" src="./test2013_files/0093.png"></td><td>4</td>
+<td>477</td><td class="solved">1<br><small>140</small></td>
+<td></td>
+<td class="solved">1<br><small>178</small></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>40</small></td>
+<td></td>
+<td class="solved">2<br><small>99</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+</tr>
+<tr><td>49</td><td title="Asia">National University of Singapore</td><td class="flag"><img class="flag" alt="SGP" src="./test2013_files/SGP.png"></td><td class="school"><img class="school" alt="National University of Singapore" src="./test2013_files/0045.png"></td><td>4</td>
+<td>487</td><td class="solved">3<br><small>111</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>163</small></td>
+<td></td>
+<td class="solved">1<br><small>84</small></td>
+<td></td>
+<td class="solvedfirst" title="First team to solve this problem">2<br><small>49</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>50</td><td title="Europe">Kazakh-British Technical University</td><td class="flag"><img class="flag" alt="KAZ" src="./test2013_files/KAZ.png"></td><td class="school"><img class="school" alt="Kazakh-British Technical University" src="./test2013_files/0035.png"></td><td>4</td>
+<td>560</td><td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">1<br><small>71</small></td>
+<td class="solved">9<br><small>172</small></td>
+<td></td>
+<td class="solved">2<br><small>36</small></td>
+<td></td>
+<td class="solved">1<br><small>101</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+</tr>
+<tr><td>51</td><td title="Asia">University of Electronic Science and Technology of China</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="University of Electronic Science and Technology of China" src="./test2013_files/0099.png"></td><td>4</td>
+<td>605</td><td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>159</small></td>
+<td></td>
+<td class="solved">2<br><small>42</small></td>
+<td></td>
+<td class="solved">1<br><small>224</small></td>
+<td></td>
+<td class="solved">3<br><small>100</small></td>
+<td></td>
+</tr>
+<tr><td>52</td><td title="Asia">Beijing University of Posts and Telecommunications</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Beijing University of Posts and Telecommunications" src="./test2013_files/0008.png"></td><td>4</td>
+<td>614</td><td class="solved">3<br><small>118</small></td>
+<td></td>
+<td class="solved">3<br><small>150</small></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">2<br><small>43</small></td>
+<td></td>
+<td class="solved">1<br><small>203</small></td>
+<td></td>
+<td class="attempted">8<br>--</td>
+<td></td>
+</tr>
+<tr><td>53</td><td title="North America">University of Waterloo</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of Waterloo" src="./test2013_files/0114.png"></td><td>4</td>
+<td>635</td><td class="solved">1<br><small>214</small></td>
+<td></td>
+<td class="solved">1<br><small>154</small></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">1<br><small>42</small></td>
+<td></td>
+<td class="solved">1<br><small>225</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>54</td><td title="Asia">Zhejiang University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Zhejiang University" src="./test2013_files/0119.png"></td><td>4</td>
+<td>675</td><td class="solved">3<br><small>264</small></td>
+<td></td>
+<td class="solved">1<br><small>114</small></td>
+<td class="attempted">11<br>--</td>
+<td></td>
+<td class="solved">2<br><small>48</small></td>
+<td></td>
+<td class="solved">1<br><small>189</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>55</td><td title="Asia">KAIST</td><td class="flag"><img class="flag" alt="KOR" src="./test2013_files/KOR.png"></td><td class="school"><img class="school" alt="KAIST" src="./test2013_files/0033.png"></td><td>4</td>
+<td>765</td><td class="solved">1<br><small>96</small></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">3<br><small>44</small></td>
+<td></td>
+<td class="solved">3<br><small>285</small></td>
+<td></td>
+<td class="solved">2<br><small>240</small></td>
+<td></td>
+</tr>
+<tr><td>56</td><td title="North America">University of Central Florida</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Central Florida" src="./test2013_files/0096.png"></td><td>4</td>
+<td>798</td><td class="solved">2<br><small>289</small></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>255</small></td>
+<td></td>
+<td class="solved">1<br><small>34</small></td>
+<td></td>
+<td class="solved">2<br><small>120</small></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+</tr>
+<tr><td>57</td><td title="Asia">Huazhong University of Science &amp; Technology</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Huazhong University of Science &amp; Technology" src="./test2013_files/0023.png"></td><td>4</td>
+<td>821</td><td class="solved">3<br><small>284</small></td>
+<td></td>
+<td class="solved">4<br><small>273</small></td>
+<td class="attempted">7<br>--</td>
+<td></td>
+<td class="solved">1<br><small>29</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>135</small></td>
+<td></td>
+</tr>
+<tr><td>58</td><td title="Asia">Hong Kong University of Science and Technology</td><td class="flag"><img class="flag" alt="HKG" src="./test2013_files/HKG.png"></td><td class="school"><img class="school" alt="Hong Kong University of Science and Technology" src="./test2013_files/0022.png"></td><td>4</td>
+<td>935</td><td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>296</small></td>
+<td></td>
+<td class="solved">1<br><small>49</small></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>256</small></td>
+<td class="solved">3<br><small>174</small></td>
+<td></td>
+</tr>
+<tr><td>59</td><td title="Asia">SungKyunKwan University</td><td class="flag"><img class="flag" alt="KOR" src="./test2013_files/KOR.png"></td><td class="school"><img class="school" alt="SungKyunKwan University" src="./test2013_files/0064.png"></td><td>4</td>
+<td>1272</td><td class="solved">2<br><small>193</small></td>
+<td></td>
+<td></td>
+<td class="attempted">13<br>--</td>
+<td></td>
+<td class="solved">9<br><small>224</small></td>
+<td></td>
+<td class="solved">2<br><small>273</small></td>
+<td></td>
+<td class="solved">10<br><small>202</small></td>
+<td></td>
+</tr>
+<tr><td>60</td><td title="Europe">International IT University</td><td class="flag"><img class="flag" alt="KAZ" src="./test2013_files/KAZ.png"></td><td class="school"><img class="school" alt="International IT University" src="./test2013_files/0030.png"></td><td>3</td>
+<td>358</td><td class="attempted">2<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">5<br><small>142</small></td>
+<td></td>
+<td class="solved">2<br><small>37</small></td>
+<td></td>
+<td class="solved">1<br><small>79</small></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td></td>
+</tr>
+<tr><td>61</td><td title="Asia">Indian Institute of Technology - Roorkee</td><td class="flag"><img class="flag" alt="IND" src="./test2013_files/IND.png"></td><td class="school"><img class="school" alt="Indian Institute of Technology - Roorkee" src="./test2013_files/0026.png"></td><td>3</td>
+<td>475</td><td class="solved">2<br><small>282</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td class="solved">2<br><small>112</small></td>
+<td></td>
+<td class="solved">1<br><small>41</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>62</td><td title="North America">University of Florida</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Florida" src="./test2013_files/0100.png"></td><td>3</td>
+<td>482</td><td class="solved">2<br><small>197</small></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td class="solved">2<br><small>159</small></td>
+<td></td>
+<td class="solved">3<br><small>46</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>63</td><td title="Europe">Universiteit Leiden</td><td class="flag"><img class="flag" alt="NLD" src="./test2013_files/NLD.png"></td><td class="school"><img class="school" alt="Universiteit Leiden" src="./test2013_files/0091.png"></td><td>3</td>
+<td>485</td><td class="solved">2<br><small>221</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td class="attempted">11<br>--</td>
+<td></td>
+<td class="solved">1<br><small>33</small></td>
+<td></td>
+<td class="solved">3<br><small>171</small></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td></td>
+</tr>
+<tr><td>64</td><td title="Latin America">Universidad de Buenos Aires - FCEN</td><td class="flag"><img class="flag" alt="ARG" src="./test2013_files/ARG.png"></td><td class="school"><img class="school" alt="Universidad de Buenos Aires - FCEN" src="./test2013_files/0075.png"></td><td>3</td>
+<td>497</td><td class="solved">2<br><small>218</small></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>109</small></td>
+<td></td>
+<td class="solved">2<br><small>70</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td></td>
+</tr>
+<tr><td>65</td><td title="Asia">Renmin University of China</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Renmin University of China" src="./test2013_files/0051.png"></td><td>3</td>
+<td>521</td><td class="attempted">2<br>--</td>
+<td></td>
+<td class="solved">2<br><small>178</small></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>34</small></td>
+<td></td>
+<td class="solved">1<br><small>289</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>66</td><td title="Asia">Bangladesh University of Engineering and Technology</td><td class="flag"><img class="flag" alt="BGD" src="./test2013_files/BGD.png"></td><td class="school"><img class="school" alt="Bangladesh University of Engineering and Technology" src="./test2013_files/0005.png"></td><td>3</td>
+<td>533</td><td class="solved">4<br><small>198</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td class="attempted">3<br>--</td>
+<td></td>
+<td class="solved">1<br><small>32</small></td>
+<td></td>
+<td class="solved">1<br><small>243</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>67</td><td title="Asia">Amirkabir University of Technology</td><td class="flag"><img class="flag" alt="IRN" src="./test2013_files/IRN.png"></td><td class="school"><img class="school" alt="Amirkabir University of Technology" src="./test2013_files/0003.png"></td><td>3</td>
+<td>534</td><td></td>
+<td></td>
+<td class="solved">1<br><small>289</small></td>
+<td class="solved">1<br><small>148</small></td>
+<td></td>
+<td class="solved">2<br><small>77</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>68</td><td title="Europe">Izhevsk State Technical University</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Izhevsk State Technical University" src="./test2013_files/0031.png"></td><td>3</td>
+<td>563</td><td class="attempted">8<br>--</td>
+<td></td>
+<td class="solved">4<br><small>158</small></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">1<br><small>35</small></td>
+<td></td>
+<td class="solved">2<br><small>290</small></td>
+<td></td>
+<td class="attempted">12<br>--</td>
+<td></td>
+</tr>
+<tr><td>69</td><td title="Latin America">Universidade Estadual de Campinas</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Universidade Estadual de Campinas" src="./test2013_files/0086.png"></td><td>3</td>
+<td>636</td><td class="solved">5<br><small>276</small></td>
+<td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">1<br><small>58</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>202</small></td>
+<td></td>
+</tr>
+<tr><td>70</td><td title="Europe">Saint Petersburg Academic University – Nanotechnology Research and Education Centre RAS</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Saint Petersburg Academic University – Nanotechnology Research and Education Centre RAS" src="./test2013_files/0053.png"></td><td>3</td>
+<td>655</td><td class="solved">4<br><small>171</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">3<br><small>63</small></td>
+<td></td>
+<td class="solved">5<br><small>241</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>71</td><td title="Super region leader, South Pacific" class="group_leader">University of New South Wales</td><td class="flag"><img class="flag" alt="AUS" src="./test2013_files/AUS.png"></td><td class="school"><img class="school" alt="University of New South Wales" src="./test2013_files/0107.png"></td><td>3</td>
+<td>665</td><td></td>
+<td></td>
+<td class="solved">3<br><small>204</small></td>
+<td class="solved">6<br><small>288</small></td>
+<td></td>
+<td class="solved">1<br><small>33</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>72</td><td title="Super region leader, Africa and the Middle East" class="group_leader">Arab Academy for Science and Technology (Alexandria)</td><td class="flag"><img class="flag" alt="EGY" src="./test2013_files/EGY.png"></td><td class="school"><img class="school" alt="Arab Academy for Science and Technology (Alexandria)" src="./test2013_files/0004.png"></td><td>3</td>
+<td>677</td><td class="solved">2<br><small>285</small></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>201</small></td>
+<td></td>
+<td class="solved">3<br><small>111</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>73</td><td title="Africa and the Middle East">Cairo University - Faculty of Computers and Information</td><td class="flag"><img class="flag" alt="EGY" src="./test2013_files/EGY.png"></td><td class="school"><img class="school" alt="Cairo University - Faculty of Computers and Information" src="./test2013_files/0010.png"></td><td>3</td>
+<td>739</td><td class="solved">1<br><small>241</small></td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td class="solved">5<br><small>186</small></td>
+<td></td>
+<td class="solved">4<br><small>172</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>74</td><td title="South Pacific">University of Sydney</td><td class="flag"><img class="flag" alt="AUS" src="./test2013_files/AUS.png"></td><td class="school"><img class="school" alt="University of Sydney" src="./test2013_files/0109.png"></td><td>3</td>
+<td>773</td><td class="solved">2<br><small>165</small></td>
+<td class="attempted">1<br>--</td>
+<td class="attempted">5<br>--</td>
+<td class="solved">1<br><small>292</small></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>236</small></td>
+<td></td>
+</tr>
+<tr><td>75</td><td title="Asia">Tianjin University</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Tianjin University" src="./test2013_files/0070.png"></td><td>3</td>
+<td>798</td><td class="attempted">6<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">7<br><small>107</small></td>
+<td></td>
+<td class="solved">4<br><small>85</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">9<br><small>266</small></td>
+<td></td>
+</tr>
+<tr><td>76</td><td title="Latin America">EAFIT University</td><td class="flag"><img class="flag" alt="COL" src="./test2013_files/COL.png"></td><td class="school"><img class="school" alt="EAFIT University" src="./test2013_files/0016.png"></td><td>2</td>
+<td>142</td><td class="solved">1<br><small>98</small></td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td class="solved">1<br><small>44</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>77</td><td title="Latin America">Universidad Nacional de Ingeniería - FIIS</td><td class="flag"><img class="flag" alt="PER" src="./test2013_files/PER.png"></td><td class="school"><img class="school" alt="Universidad Nacional de Ingeniería - FIIS" src="./test2013_files/0080.png"></td><td>2</td>
+<td>176</td><td class="attempted">2<br>--</td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td class="solved">1<br><small>108</small></td>
+<td></td>
+<td class="solved">2<br><small>48</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+</tr>
+<tr><td>78</td><td title="Europe">Moscow State Institute of Steel and Alloys</td><td class="flag"><img class="flag" alt="RUS" src="./test2013_files/RUS.png"></td><td class="school"><img class="school" alt="Moscow State Institute of Steel and Alloys" src="./test2013_files/0041.png"></td><td>2</td>
+<td>196</td><td class="solved">1<br><small>134</small></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>62</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">13<br>--</td>
+<td></td>
+</tr>
+<tr><td>79</td><td title="North America">University of Wisconsin - Madison</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Wisconsin - Madison" src="./test2013_files/0115.png"></td><td>2</td>
+<td>218</td><td class="solved">1<br><small>146</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>52</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+</tr>
+<tr><td>80</td><td title="North America">University of Lethbridge</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of Lethbridge" src="./test2013_files/0103.png"></td><td>2</td>
+<td>251</td><td class="solved">1<br><small>190</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>41</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">12<br>--</td>
+<td></td>
+</tr>
+<tr><td>81</td><td title="Asia">Chennai Mathematical Institute</td><td class="flag"><img class="flag" alt="IND" src="./test2013_files/IND.png"></td><td class="school"><img class="school" alt="Chennai Mathematical Institute" src="./test2013_files/0013.png"></td><td>2</td>
+<td>276</td><td class="solved">1<br><small>154</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>62</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>82</td><td title="Latin America">Universidad Nacional del Sur</td><td class="flag"><img class="flag" alt="ARG" src="./test2013_files/ARG.png"></td><td class="school"><img class="school" alt="Universidad Nacional del Sur" src="./test2013_files/0081.png"></td><td>2</td>
+<td>297</td><td class="solved">1<br><small>230</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>67</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>83</td><td title="Europe">Kaunas University of Technology</td><td class="flag"><img class="flag" alt="LTU" src="./test2013_files/LTU.png"></td><td class="school"><img class="school" alt="Kaunas University of Technology" src="./test2013_files/0034.png"></td><td>2</td>
+<td>308</td><td class="attempted">2<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">5<br><small>190</small></td>
+<td class="attempted">2<br>--</td>
+<td class="solved">1<br><small>38</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>84</td><td title="North America">University of Calgary</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of Calgary" src="./test2013_files/0094.png"></td><td>2</td>
+<td>325</td><td class="attempted">1<br>--</td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>76</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>209</small></td>
+<td></td>
+</tr>
+<tr><td>85</td><td title="Latin America">Universidad de La Habana</td><td class="flag"><img class="flag" alt="CUB" src="./test2013_files/CUB.png"></td><td class="school"><img class="school" alt="Universidad de La Habana" src="./test2013_files/0077.png"></td><td>2</td>
+<td>336</td><td class="attempted">3<br>--</td>
+<td></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+<td class="solved">1<br><small>74</small></td>
+<td></td>
+<td class="solved">1<br><small>262</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>86</td><td title="Europe">Universität Rostock</td><td class="flag"><img class="flag" alt="DEU" src="./test2013_files/DEU.png"></td><td class="school"><img class="school" alt="Universität Rostock" src="./test2013_files/0090.png"></td><td>2</td>
+<td>339</td><td></td>
+<td></td>
+<td class="solved">1<br><small>245</small></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">3<br><small>54</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>87</td><td title="Asia">Indian Institute of Technology - Indore</td><td class="flag"><img class="flag" alt="IND" src="./test2013_files/IND.png"></td><td class="school"><img class="school" alt="Indian Institute of Technology - Indore" src="./test2013_files/0025.png"></td><td>2</td>
+<td>345</td><td class="solved">2<br><small>276</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>49</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>88</td><td title="Asia">Harbin Institute of Technology</td><td class="flag"><img class="flag" alt="CHN" src="./test2013_files/CHN.png"></td><td class="school"><img class="school" alt="Harbin Institute of Technology" src="./test2013_files/0021.png"></td><td>2</td>
+<td>386</td><td class="attempted">6<br>--</td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td class="solved">5<br><small>225</small></td>
+<td></td>
+<td class="solved">3<br><small>41</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>89</td><td title="Africa and the Middle East">University of Cape Town</td><td class="flag"><img class="flag" alt="ZAF" src="./test2013_files/ZAF.png"></td><td class="school"><img class="school" alt="University of Cape Town" src="./test2013_files/0095.png"></td><td>2</td>
+<td>389</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">1<br><small>63</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>266</small></td>
+<td></td>
+</tr>
+<tr><td>90</td><td title="Asia">International Institute of Information Technology - Hyderabad</td><td class="flag"><img class="flag" alt="IND" src="./test2013_files/IND.png"></td><td class="school"><img class="school" alt="International Institute of Information Technology - Hyderabad" src="./test2013_files/0029.png"></td><td>2</td>
+<td>397</td><td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>249</small></td>
+<td></td>
+<td class="solved">2<br><small>68</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>91</td><td title="Latin America">Universidad Panamericana Campus Bonaterra</td><td class="flag"><img class="flag" alt="MEX" src="./test2013_files/MEX.png"></td><td class="school"><img class="school" alt="Universidad Panamericana Campus Bonaterra" src="./test2013_files/0082.png"></td><td>2</td>
+<td>414</td><td class="solved">4<br><small>256</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>78</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>92</td><td title="Asia">Shahjalal University of Science and Technology</td><td class="flag"><img class="flag" alt="BGD" src="./test2013_files/BGD.png"></td><td class="school"><img class="school" alt="Shahjalal University of Science and Technology" src="./test2013_files/0056.png"></td><td>2</td>
+<td>441</td><td class="solved">4<br><small>277</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>84</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>93</td><td title="North America">University of British Columbia</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of British Columbia" src="./test2013_files/0092.png"></td><td>2</td>
+<td>625</td><td class="solved">8<br><small>292</small></td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>193</small></td>
+<td></td>
+<td class="attempted">12<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">11<br>--</td>
+<td></td>
+</tr>
+<tr><td>94</td><td title="Asia">University of Hong Kong</td><td class="flag"><img class="flag" alt="HKG" src="./test2013_files/HKG.png"></td><td class="school"><img class="school" alt="University of Hong Kong" src="./test2013_files/0101.png"></td><td>1</td>
+<td> 35</td><td class="attempted">7<br>--</td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>35</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>95</td><td title="Africa and the Middle East">The American University in Cairo</td><td class="flag"><img class="flag" alt="EGY" src="./test2013_files/EGY.png"></td><td class="school"><img class="school" alt="The American University in Cairo" src="./test2013_files/0066.png"></td><td>1</td>
+<td> 90</td><td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">2<br><small>70</small></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>96</td><td title="Africa and the Middle East">Alexandria University - Faculty of Engineering</td><td class="flag"><img class="flag" alt="EGY" src="./test2013_files/EGY.png"></td><td class="school"><img class="school" alt="Alexandria University - Faculty of Engineering" src="./test2013_files/0001.png"></td><td>1</td>
+<td> 90</td><td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td class="solved">1<br><small>90</small></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>97</td><td title="Africa and the Middle East">Tishreen University</td><td class="flag"><img class="flag" alt="SYR" src="./test2013_files/SYR.png"></td><td class="school"><img class="school" alt="Tishreen University" src="./test2013_files/0071.png"></td><td>1</td>
+<td>101</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+<td class="solved">1<br><small>101</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>98</td><td title="Asia">Indian Institute of Technology - Bombay</td><td class="flag"><img class="flag" alt="IND" src="./test2013_files/IND.png"></td><td class="school"><img class="school" alt="Indian Institute of Technology - Bombay" src="./test2013_files/0024.png"></td><td>1</td>
+<td>109</td><td class="attempted">1<br>--</td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td class="attempted">7<br>--</td>
+<td></td>
+<td class="solved">3<br><small>69</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">9<br>--</td>
+<td></td>
+</tr>
+<tr><td>99</td><td title="Latin America">Universidad Tecnologica de Pereira</td><td class="flag"><img class="flag" alt="COL" src="./test2013_files/COL.png"></td><td class="school"><img class="school" alt="Universidad Tecnologica de Pereira" src="./test2013_files/0083.png"></td><td>1</td>
+<td>122</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">43<br>--</td>
+<td></td>
+<td class="solved">1<br><small>122</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+</tr>
+<tr><td>100</td><td title="North America">University of Minnesota - Twin Cities</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Minnesota - Twin Cities" src="./test2013_files/0106.png"></td><td>1</td>
+<td>123</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">7<br>--</td>
+<td></td>
+<td class="solved">2<br><small>103</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+</tr>
+<tr><td>101</td><td title="Latin America">Universidad Nacional de Colombia - Bogotá</td><td class="flag"><img class="flag" alt="COL" src="./test2013_files/COL.png"></td><td class="school"><img class="school" alt="Universidad Nacional de Colombia - Bogotá" src="./test2013_files/0079.png"></td><td>1</td>
+<td>146</td><td class="attempted">6<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">3<br><small>106</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>102</td><td title="Latin America">Escuela Superior De Computo Instituto Politecnico Nacional</td><td class="flag"><img class="flag" alt="MEX" src="./test2013_files/MEX.png"></td><td class="school"><img class="school" alt="Escuela Superior De Computo Instituto Politecnico Nacional" src="./test2013_files/0017.png"></td><td>1</td>
+<td>163</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">3<br><small>123</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+</tr>
+<tr><td>103</td><td title="Asia">Can Tho University</td><td class="flag"><img class="flag" alt="VNM" src="./test2013_files/VNM.png"></td><td class="school"><img class="school" alt="Can Tho University" src="./test2013_files/0011.png"></td><td>1</td>
+<td>171</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">12<br>--</td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td class="solved">3<br><small>131</small></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>104</td><td title="North America">University of Illinois at Urbana-Champaign</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Illinois at Urbana-Champaign" src="./test2013_files/0102.png"></td><td>1</td>
+<td>180</td><td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">5<br><small>100</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>105</td><td title="Latin America">Universidade de São Paulo - Instituto de Ciências Matemáticas e de Computação</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Universidade de São Paulo - Instituto de Ciências Matemáticas e de Computação" src="./test2013_files/0085.png"></td><td>1</td>
+<td>204</td><td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td class="solved">3<br><small>164</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>106</td><td title="Latin America">Universidad de las Ciencias Informáticas</td><td class="flag"><img class="flag" alt="CUB" src="./test2013_files/CUB.png"></td><td class="school"><img class="school" alt="Universidad de las Ciencias Informáticas" src="./test2013_files/0078.png"></td><td>1</td>
+<td>219</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">3<br><small>179</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>107</td><td title="North America">University of Chicago</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Chicago" src="./test2013_files/0097.png"></td><td>1</td>
+<td>278</td><td></td>
+<td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td class="solved">6<br><small>178</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>108</td><td title="Latin America">Universidade de São Paulo - Escola Politécnica</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Universidade de São Paulo - Escola Politécnica" src="./test2013_files/0084.png"></td><td>1</td>
+<td>279</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">4<br><small>219</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>109</td><td title="North America">University of Connecticut</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Connecticut" src="./test2013_files/0098.png"></td><td>1</td>
+<td>330</td><td></td>
+<td></td>
+<td></td>
+<td class="solved">5<br><small>250</small></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>110</td><td title="Latin America">Universidad de Chile</td><td class="flag"><img class="flag" alt="CHL" src="./test2013_files/CHL.png"></td><td class="school"><img class="school" alt="Universidad de Chile" src="./test2013_files/0076.png"></td><td>1</td>
+<td>347</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">5<br><small>267</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+</tr>
+<tr><td>111</td><td title="Latin America">Universidade Federal de Minas Gerais</td><td class="flag"><img class="flag" alt="BRA" src="./test2013_files/BRA.png"></td><td class="school"><img class="school" alt="Universidade Federal de Minas Gerais" src="./test2013_files/0087.png"></td><td>1</td>
+<td>446</td><td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td class="solved">9<br><small>286</small></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="Africa and the Middle East">German University in Cairo</td><td class="flag"><img class="flag" alt="EGY" src="./test2013_files/EGY.png"></td><td class="school"><img class="school" alt="German University in Cairo" src="./test2013_files/0020.png"></td><td>0</td>
+<td>  0</td><td class="attempted">2<br>--</td>
+<td></td>
+<td></td>
+<td class="attempted">4<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">6<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="North America">LeTourneau University</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="LeTourneau University" src="./test2013_files/0036.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="Asia">Nanyang Technological University</td><td class="flag"><img class="flag" alt="SGP" src="./test2013_files/SGP.png"></td><td class="school"><img class="school" alt="Nanyang Technological University" src="./test2013_files/0043.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td></td>
+<td class="attempted">5<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="North America">Rose-Hulman Institute of Technology</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="Rose-Hulman Institute of Technology" src="./test2013_files/0052.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">3<br>--</td>
+<td class="attempted">15<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="North America">South Dakota School of Mines and Technology</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="South Dakota School of Mines and Technology" src="./test2013_files/0060.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="Asia">Tokyo Institute of Technology</td><td class="flag"><img class="flag" alt="JPN" src="./test2013_files/JPN.png"></td><td class="school"><img class="school" alt="Tokyo Institute of Technology" src="./test2013_files/0072.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td class="attempted">6<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="North America">University of Manitoba</td><td class="flag"><img class="flag" alt="CAN" src="./test2013_files/CAN.png"></td><td class="school"><img class="school" alt="University of Manitoba" src="./test2013_files/0104.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">2<br>--</td>
+<td></td>
+</tr>
+<tr><td>112</td><td title="North America">University of Virginia</td><td class="flag"><img class="flag" alt="USA" src="./test2013_files/USA.png"></td><td class="school"><img class="school" alt="University of Virginia" src="./test2013_files/0112.png"></td><td>0</td>
+<td>  0</td><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="attempted">1<br>--</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr><td colspan="6"></td><th class="problemcolheader">A</th>
+<th class="problemcolheader">B</th>
+<th class="problemcolheader">C</th>
+<th class="problemcolheader">D</th>
+<th class="problemcolheader">E</th>
+<th class="problemcolheader">F</th>
+<th class="problemcolheader">G</th>
+<th class="problemcolheader">H</th>
+<th class="problemcolheader">I</th>
+<th class="problemcolheader">J</th>
+<th class="problemcolheader">K</th>
+</tr>
+<tr title="number of teams that solved problem / number of attempts (successful and failed)"><td colspan="6">Monkey Stats™</td><td><small>76/219 (34%)</small></td><td><small>2/34 (5%)</small></td><td><small>51/169 (30%)</small></td><td><small>62/380 (16%)</small></td><td><small>5/50 (10%)</small></td><td><small>107/273 (39%)</small></td><td><small>0/35 (0%)</small></td><td><small>66/160 (41%)</small></td><td><small>12/37 (32%)</small></td><td><small>46/273 (16%)</small></td><td><small>3/9 (33%)</small></td></tr><tr title="number of attempts / teams attempting problem"><td colspan="6">Average tries</td><td><small>2.33</small></td><td><small>2.62</small></td><td><small>2.41</small></td><td><small>4.18</small></td><td><small>3.12</small></td><td><small>2.33</small></td><td><small>5.00</small></td><td><small>2.16</small></td><td><small>2.31</small></td><td><small>3.55</small></td><td><small>1.80</small></td></tr><tr title="number of attempts needed to solve problem / number of teams solving problem"><td colspan="6">Averages tries to solve</td><td><small>2.05</small></td><td><small>2.00</small></td><td><small>2.10</small></td><td><small>2.77</small></td><td><small>2.40</small></td><td><small>2.09</small></td><td><small>--</small></td><td><small>1.98</small></td><td><small>2.42</small></td><td><small>2.74</small></td><td><small>1.67</small></td></tr></tbody></table>
+
+
+</div>
+
+
+
+
+<script type="text/javascript" src="./test2013_files/cache.php"></script></body></html>

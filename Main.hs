@@ -3,10 +3,8 @@
 
 {-
 
-NOTE: Don't modify this file unless you know what you are doing.  If you are
-new to snap, start with Site.hs and Application.hs.  This file contains
-boilerplate needed for dynamic reloading and is not meant for general
-consumption.
+This file contains boilerplate needed for dynamic reloading and is not meant 
+for general consumption.
 
 Occasionally if we modify the way the dynamic reloader works and you want to
 upgrade, you might have to swap out this file for a newer version.  But in
