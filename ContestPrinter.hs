@@ -3,7 +3,7 @@
 -- Todas las funciones auxiliares generan Strings, que son usadas por generate para finalmente imprimir el scoreboard completo.
 -- Por razones de simplicidad y de generar un scoreboard igual al que proveen en el mundial de programación, se utilizan dos archivos que tienen las directivas usadas para lograr el mismo formato.
 
-module HtmlContestPrinter (generate) where
+module ContestPrinter (generate) where
 import Tipes
 import Auxiliar (bool)
 

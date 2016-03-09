@@ -16,7 +16,7 @@ import           Snap.Snaplet
 import           Snap.Snaplet.Heist (heistLocal, render)
 import           Control.Monad.Trans (liftIO)
 import           Application
-import           HtmlContestPrinter (generate)
+import           ContestPrinter (generate)
 import           Score
 import           User
 
@@ -174,6 +174,7 @@ handleUnpause = unpause >> redirect "/"
 handleScore :: Handler App App ()
 handleScore = do 
             c <- getContest
+         --   (view, result) <- runForm "score" formSubmit
             g <- liftIO $ generate c
             writeText $ T.pack $ g
 

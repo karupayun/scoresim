@@ -94,10 +94,13 @@ app = makeSnaplet "app" "An snaplet example application." Nothing $ do
     s <- nestSnaplet "sess" sess $
            initCookieSessionManager "site_key.txt" "sess" (Just 3600)
 
+    -- NOTE: We're using initJsonFileAuthManager here because it's easy and
+    -- doesn't require any kind of database server to run.  In practice,
+    -- you'll probably want to change this to a more robust auth backend.
     a <- nestSnaplet "auth" auth $
            initJsonFileAuthManager defAuthSettings sess "users.json"
     addRoutes routes
     addAuthSplices h auth
     st <- liftIO $ newIORef vacio
-    return $ App h s a st 
+    return $ App h s a st
 
