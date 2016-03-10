@@ -17,7 +17,7 @@ import           Snap.Snaplet.Heist (heistLocal, render)
 import           Control.Monad.Trans (liftIO)
 import           Application
 import           ContestPrinter (generate)
-import           Score
+import           Scoreboard
 import           User
 
 data DatosForm = DatosForm {

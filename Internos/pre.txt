@@ -580,4 +580,4 @@ tr.highlight {
 
 <h1>Simulador de Scoreboard</h1><br><table>
 <tbody><tr></tr></tbody></table>
-<table id="tablelegend"><tbody><tr><td class="latinos">Team de Latinoamerica</td><td class="solved">Solved problem</td><td class="user">Equipos en Competencia</td></tr></tbody></table>
+<table id="tablelegend"><tbody><tr><td class="latinos">Team de Latinoamerica</td><td class="solved">Solved problem</td><td class="attempted">Attempted problem</td><td class="user">Equipos en Competencia</td></tr></tbody></table>

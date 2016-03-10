@@ -3,7 +3,7 @@
 --   Es la interacción entre el usuario y el modulo Parser que parsea
 --      ese scoreboard. La comunicación se da mediante un archivo "in.html"
 
-module Score (scanPage, scanFile, chooseScore) where
+module Scoreboard (scanPage, scanFile, chooseScore) where
 import Tipes
 import Parser 
 import Network.HTTP

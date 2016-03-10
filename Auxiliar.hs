@@ -18,7 +18,7 @@ addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
 -- makeSubs :: inventa las posibles submissions dado la información final de un problema (sin tener la verdadera información).
 makeSubs :: Problem -> Submissions
 makeSubs NotTried = []
-makeSubs (Tried i) = replicate (i) (False,1)
+makeSubs (Tried i) = replicate (i) (False,301)
 makeSubs (Solved (c,m)) = (True,m) : replicate (c-1) (False,m)
 
 -- bool :: Función auxiliar para trabajar con Bools. La debería exportar Data.Bool pero no me la exporta.

@@ -6,6 +6,7 @@
 module ContestPrinter (generate) where
 import Tipes
 import Auxiliar (bool)
+import Format
 
 -- Archivos auxiliares. Usados para dar un formato similar al formato Kattis usado en el mundial. Simplemente son copias de la parte previa y posterior de una tabla.
 prehtml = "Internos/pre.txt"
@@ -25,7 +26,7 @@ printCelda = encapsular "td"
 
 printProblem :: Problem -> String
 printProblem NotTried = encapsular "td" ""
-printProblem (Tried _) = encapsular "td" ""
+printProblem (Tried x) = encapsularAttr ("class=attempted") "td" $ show x ++ "<br>" ++ encapsular "small" ("--")
 printProblem (Solved (i,t)) = encapsularAttr ("class=solved") "td" $ show i ++ "<br>" ++ encapsular "small" (show t)
 
 printProblems :: [Problem] -> String
