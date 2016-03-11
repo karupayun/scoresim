@@ -6,7 +6,6 @@
 module ContestPrinter (generate) where
 import Tipes
 import Auxiliar (bool)
-import Format
 
 -- Archivos auxiliares. Usados para dar un formato similar al formato Kattis usado en el mundial. Simplemente son copias de la parte previa y posterior de una tabla.
 prehtml = "Internos/pre.txt"
