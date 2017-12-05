@@ -1,0 +1,44 @@
+-- The name of the package.
+name:                scoresim
+
+-- The package version.  See the Haskell package versioning policy (PVP)
+-- for standards guiding when and how versions should be incremented.
+-- https://wiki.haskell.org/Package_versioning_policy
+-- PVP summary:      +-+------- breaking API changes
+--                   | | +----- non-breaking API additions
+--                   | | | +--- code changes with no API change
+version:             0.1.0.0
+
+-- A short (one-line) description of the package.
+synopsis:            Simulador de scoreboard para ACM-ICPC
+
+-- The package author(s).
+author:              karupayun
+
+build-type:          Simple
+
+-- Constraint on the version of Cabal needed to build this package.
+cabal-version:       >=1.10
+
+
+executable scoresim
+  -- .hs or .lhs file containing the Main module.
+  main-is:             Main.hs
+
+  -- Modules included in this executable, other than Main.
+  other-modules:       Application, Auxiliar, ContestPrinter, Form,
+                       Parser, ParserKattis, Scoreboard, Site, Teams,
+                       Tipes, User
+
+  -- LANGUAGE extensions used by modules in this package.
+  other-extensions:    TemplateHaskell, OverloadedStrings, CPP
+
+  -- Other library packages from which modules are imported.
+  build-depends:       base, HTTP, text, bytestring, mtl, transformers,
+                       snap, snap-server, snap-core, snap-loader-static,
+                       heist, lens, hxt, time, HandsomeSoup,
+                       digestive-functors, digestive-functors-heist,
+                       digestive-functors-snap
+
+  -- Base language which the package is written in.
+  default-language:    Haskell2010

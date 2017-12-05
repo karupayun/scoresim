@@ -1,0 +1,12 @@
+# Resolver to use
+resolver: lts-5.6
+
+# Packages to build (current directory)
+packages:
+- .
+
+# Dependency packages to be pulled from upstream that are not in the resolver
+extra-deps:
+- snap-loader-static-1.0.0.0
+- digestive-functors-heist-0.8.7.0
+- digestive-functors-snap-0.6.1.3
