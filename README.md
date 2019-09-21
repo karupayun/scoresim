@@ -9,7 +9,7 @@ Screenshots
 ================
 ![alt Home Screen](https://github.com/karupayun/scoresim/blob/master/images/homescreen.png)
 
-![alt An example competition](https://raw.githubusercontent.com/karupayun/nek/master/examples/score.png)
+![alt An example competition](https://github.com/karupayun/scoresim/blob/master/images/score.png)
 
 Building
 ================
