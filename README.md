@@ -7,7 +7,7 @@ You have to choose a competition and the simulator will show the scoreboard minu
 
 Screenshots
 ================
-![alt Home Screen](https://raw.githubusercontent.com/karupayun/nek/master/examples/homescreen.png)
+![alt Home Screen](https://github.com/karupayun/scoresim/blob/master/images/homescreen.png)
 
 ![alt An example competition](https://raw.githubusercontent.com/karupayun/nek/master/examples/score.png)
 
