@@ -17,7 +17,9 @@ First you have to download Stack:
 > sudo apt install haskell-stack
 
 > stack setup
+
 > stack build
+
 > stack exec scoresim
 
 If there are not errors, writing http://0.0.0.0:8000/ you can see the home screen.
